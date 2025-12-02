@@ -360,52 +360,88 @@
       opacity: 0.4;
     }
 
-    /* REALIZACE */
-    .gallery-grid {
+    /* REALIZACE – kategorie + slider */
+    .gallery-shell {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      background: #ffffff;
+      box-shadow: 0 16px 32px rgba(15,23,42,0.06);
+      padding: 18px 18px 20px;
+    }
+    .gallery-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .gallery-tab {
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      background: #f9fafb;
+      padding: 6px 12px;
+      font-size: 0.84rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+    .gallery-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #111827;
+      font-weight: 600;
+    }
+    .gallery-viewer {
       display: grid;
-      grid-template-columns: 2fr 1.2fr;
-      gap: 22px;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 16px;
       align-items: stretch;
     }
-    .gallery-main {
-      border-radius: var(--radius-lg);
+    .gallery-image-wrapper {
+      border-radius: 16px;
       overflow: hidden;
-      position: relative;
       background: #020617;
+      position: relative;
+      min-height: 260px;
     }
-    .gallery-main img {
+    .gallery-image-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      max-height: 360px;
     }
-    .gallery-strip {
-      display: grid;
-      grid-template-rows: repeat(3, minmax(0, 1fr));
+    .gallery-controls {
+      position: absolute;
+      inset: auto 12px 12px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 10px;
     }
-    .gallery-item {
-      border-radius: 14px;
-      overflow: hidden;
-      position: relative;
-      background: #020617;
-    }
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .gallery-badge {
-      position: absolute;
-      left: 14px;
-      bottom: 14px;
-      background: rgba(15,23,42,0.9);
+    .gallery-btn {
+      border-radius: 999px;
+      border: none;
+      background: rgba(15,23,42,0.85);
       color: #e5e7eb;
       padding: 6px 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .gallery-counter {
+      font-size: 0.82rem;
+      padding: 4px 10px;
       border-radius: 999px;
-      font-size: 0.75rem;
-      border: 1px solid rgba(148,163,184,0.6);
-      backdrop-filter: blur(8px);
+      background: rgba(15,23,42,0.85);
+      color: #e5e7eb;
+    }
+    .gallery-caption {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .gallery-caption-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+    .gallery-caption-body {
+      margin: 0;
     }
 
     /* ABOUT */
@@ -522,7 +558,7 @@
       .hero-grid,
       .about-grid,
       .contact-inner,
-      .gallery-grid {
+      .gallery-viewer {
         grid-template-columns: minmax(0, 1fr);
       }
       .hero { padding-top: 46px; }
@@ -604,7 +640,7 @@
         <aside class="hero-media">
           <div class="hero-photo">
             <!-- Nahraď svým obrázkem -->
-            <img src="foto-hero.jpg" alt="Ukázka řemeslných prací">
+            <img src="reko.png" alt="Ukázka řemeslných prací">
             <div class="hero-badge">
               <span class="hero-badge-dot"></span>
               Osobně na každé zakázce
@@ -709,34 +745,42 @@
     </div>
   </section>
 
-  <!-- REALIZACE -->
+  <!-- REALIZACE – kategorie + slider -->
   <section id="realizace">
     <div class="container">
       <div class="section-header">
         <div class="section-eyebrow">Realizace</div>
-        <h2 class="section-title">Ukázky práce z reálných zakázek</h2>
+        <h2 class="section-title">Ukázky práce podle typu zakázky</h2>
         <p class="section-subtitle">
-          Fotky nahraďte vlastními z elektro, vody, topení, koupelen a sádrokartonů.
+          Vyberte si kategorii – elektro, topení, koupelna, sádrokarton nebo zednické práce.
+          U kategorií s více fotkami můžete přepínat šipkami.
         </p>
       </div>
 
-      <div class="gallery-grid">
-        <div class="gallery-main">
-          <img src="realizace-hlavni.jpg" alt="Kompletní rekonstrukce">
-          <div class="gallery-badge">Kompletní rekonstrukce bytu</div>
+      <div class="gallery-shell">
+        <div class="gallery-tabs">
+          <button class="gallery-tab active" data-category="elektro">Elektro</button>
+          <button class="gallery-tab" data-category="topeni">Topení</button>
+          <button class="gallery-tab" data-category="koupelna">Koupelna</button>
+          <button class="gallery-tab" data-category="sadro">Sádrokartony</button>
+          <button class="gallery-tab" data-category="zednik">Zednické práce</button>
+          <button class="gallery-tab" data-category="reko">Rekonstrukce</button>
         </div>
-        <div class="gallery-strip">
-          <div class="gallery-item">
-            <img src="realizace-elektro.jpg" alt="Elektroinstalace">
-            <div class="gallery-badge">Elektro</div>
+
+        <div class="gallery-viewer">
+          <div class="gallery-image-wrapper">
+            <img id="gallery-image" src="ele.png" alt="Elektro – rozvaděč">
+            <div class="gallery-controls">
+              <button type="button" class="gallery-btn" onclick="changeImage(-1)">◀</button>
+              <span class="gallery-counter" id="gallery-counter">1 / 3</span>
+              <button type="button" class="gallery-btn" onclick="changeImage(1)">▶</button>
+            </div>
           </div>
-          <div class="gallery-item">
-            <img src="realizace-koupelna.jpg" alt="Koupelna">
-            <div class="gallery-badge">Koupelna</div>
-          </div>
-          <div class="gallery-item">
-            <img src="realizace-topeni.jpg" alt="Topení">
-            <div class="gallery-badge">Topení</div>
+          <div class="gallery-caption">
+            <div class="gallery-caption-title" id="gallery-title">Elektro – rozvaděče a rozvody</div>
+            <p class="gallery-caption-body" id="gallery-text">
+              Ukázky čistě zapojených rozvaděčů a elektroinstalace v rozestavěných i hotových interiérech.
+            </p>
           </div>
         </div>
       </div>
@@ -883,6 +927,101 @@
         nav.style.boxShadow = '';
       }
     }
+
+    // DATA PRO GALERII
+    const galleryData = {
+      elektro: {
+        title: 'Elektro – rozvaděče a rozvody',
+        text: 'Ukázky zapojení rozvaděčů, jističů a rozvodů v interiéru.',
+        images: [
+          { src: 'ele.png', alt: 'Elektroinstalace – rozvaděč 1' },
+          { src: 'ele2.png', alt: 'Elektroinstalace – rozvaděč 2' },
+          { src: 'ele3.png', alt: 'Elektroinstalace – rozvod ve zdi' }
+        ]
+      },
+      topeni: {
+        title: 'Topení – rozvody a technická místnost',
+        text: 'Rozvody topení, rozvaděče, kotelna a technické rozvody.',
+        images: [
+          { src: 'topeni.png', alt: 'Rozvody topení v místnosti' },
+          { src: 'topeni2.png', alt: 'Technická místnost s bojlerem a rozvody' },
+          { src: 'topeni3.png', alt: 'Topenářské rozvody a armatury' }
+        ]
+      },
+      koupelna: {
+        title: 'Koupelna – sanitární instalace',
+        text: 'Přípojky, rozvody a připravené vývody pro koupelnu.',
+        images: [
+          { src: 'koupelna.png', alt: 'Instalace v koupelně' }
+        ]
+      },
+      sadro: {
+        title: 'Sádrokarton – podhledy a šikminy',
+        text: 'Montáž sádrokartonových konstrukcí, podhledů a šikmin v podkroví.',
+        images: [
+          { src: 'sadro.jpg', alt: 'Sádrokarton – hotová podlaha a střešní okno' },
+          { src: 'sadro2.jpg', alt: 'Sádrokarton – konstrukce a rozvody' },
+          { src: 'sadro4.jpg', alt: 'Sádrokarton – hotové šikminy' }
+        ]
+      },
+      zednik: {
+        title: 'Zednické práce – fasáda a interiér',
+        text: 'Úpravy fasády, štuky a zednické práce v interiéru.',
+        images: [
+          { src: 'zednik.jpg', alt: 'Zateplená fasáda domu' },
+          { src: 'zednik2.jpg', alt: 'Obložená stěna v interiéru' },
+          { src: 'zednik3.jpg', alt: 'Schodiště a omítky' }
+        ]
+      },
+      reko: {
+        title: 'Celková rekonstrukce',
+        text: 'Příklad větší zakázky s kombinací více profesí.',
+        images: [
+          { src: 'reko.png', alt: 'Rekonstruovaný interiér' }
+        ]
+      }
+    };
+
+    let currentCategory = 'elektro';
+    let currentIndex = 0;
+
+    function updateGallery() {
+      const data = galleryData[currentCategory];
+      if (!data) return;
+
+      const imgEl = document.getElementById('gallery-image');
+      const counterEl = document.getElementById('gallery-counter');
+      const titleEl = document.getElementById('gallery-title');
+      const textEl = document.getElementById('gallery-text');
+
+      const item = data.images[currentIndex];
+
+      imgEl.src = item.src;
+      imgEl.alt = item.alt;
+      counterEl.textContent = (currentIndex + 1) + ' / ' + data.images.length;
+      titleEl.textContent = data.title;
+      textEl.textContent = data.text;
+    }
+
+    function changeImage(direction) {
+      const data = galleryData[currentCategory];
+      if (!data) return;
+      currentIndex = (currentIndex + direction + data.images.length) % data.images.length;
+      updateGallery();
+    }
+
+    document.querySelectorAll('.gallery-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.gallery-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentCategory = tab.dataset.category;
+        currentIndex = 0;
+        updateGallery();
+      });
+    });
+
+    // inicializace galerie po načtení
+    updateGallery();
   </script>
 </body>
 </html>
