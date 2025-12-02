@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Řemeslné práce – elektro, voda, topení, zednické práce</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Kompletní řemeslné práce – elektroinstalace, vodoinstalace, topení, odpady, sádrokartony, zednické práce, chytré domácnosti a tepelná čerpadla. Kvalita, spolehlivost a poctivá práce.">
+  <meta name="description" content="Kompletní řemeslné práce – elektro, voda, topení, odpady, sádrokartony, zednické práce, chytré domácnosti a tepelná čerpadla.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -22,14 +22,8 @@
       --shadow-soft: 0 20px 40px rgba(15, 23, 42, 0.14);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -37,17 +31,8 @@
       background: #ffffff;
       line-height: 1.7;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
     .container {
       max-width: 1160px;
       margin: 0 auto;
@@ -55,7 +40,6 @@
     }
 
     /* NAVBAR */
-
     .navbar {
       position: sticky;
       top: 0;
@@ -65,7 +49,6 @@
       color: #e5e7eb;
       box-shadow: 0 1px 0 rgba(148,163,184,0.25);
     }
-
     .navbar-inner {
       display: flex;
       align-items: center;
@@ -74,7 +57,6 @@
       max-width: 1160px;
       margin: 0 auto;
     }
-
     .brand {
       display: flex;
       align-items: center;
@@ -84,7 +66,6 @@
       text-transform: uppercase;
       font-size: 0.9rem;
     }
-
     .brand-mark {
       width: 28px;
       height: 28px;
@@ -98,13 +79,7 @@
       font-weight: 700;
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      font-size: 0.9rem;
-    }
-
+    .nav-links { display: flex; gap: 24px; font-size: 0.9rem; }
     .nav-links a {
       position: relative;
       padding-bottom: 4px;
@@ -112,7 +87,6 @@
       color: #e5e7eb;
       opacity: 0.85;
     }
-
     .nav-links a::after {
       content: "";
       position: absolute;
@@ -124,15 +98,8 @@
       border-radius: 999px;
       transition: width 0.2s ease-out;
     }
-
-    .nav-links a:hover {
-      opacity: 1;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
+    .nav-links a:hover { opacity: 1; }
+    .nav-links a:hover::after { width: 100%; }
     .nav-phone {
       font-size: 0.9rem;
       display: flex;
@@ -143,12 +110,7 @@
       border-radius: 999px;
       border: 1px solid rgba(248,250,252,0.18);
     }
-
-    .nav-phone span {
-      font-weight: 600;
-      color: #f9fafb;
-    }
-
+    .nav-phone span { font-weight: 600; color: #f9fafb; }
     .nav-burger {
       display: none;
       width: 26px;
@@ -158,7 +120,6 @@
       gap: 4px;
       cursor: pointer;
     }
-
     .nav-burger span {
       display: block;
       height: 2px;
@@ -168,7 +129,6 @@
     }
 
     /* HERO */
-
     .hero {
       background: radial-gradient(circle at top left, #1f2937 0, #020617 38%), #020617;
       color: #e5e7eb;
@@ -176,7 +136,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .hero::before {
       content: "";
       position: absolute;
@@ -187,14 +146,12 @@
       background: radial-gradient(circle, rgba(248,250,252,0.08) 0, transparent 60%);
       pointer-events: none;
     }
-
     .hero-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       gap: 48px;
       align-items: center;
     }
-
     .eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.2em;
@@ -202,32 +159,25 @@
       color: #9ca3af;
       margin-bottom: 14px;
     }
-
     .hero-title {
       font-size: clamp(2.1rem, 3vw, 2.8rem);
       line-height: 1.2;
       margin: 0 0 16px;
       font-weight: 600;
     }
-
-    .hero-title span {
-      color: var(--accent);
-    }
-
+    .hero-title span { color: var(--accent); }
     .hero-subtitle {
       font-size: 0.98rem;
       max-width: 520px;
       color: #d1d5db;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
-
     .hero-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 26px;
+      margin-bottom: 22px;
     }
-
     .tag-pill {
       font-size: 0.73rem;
       text-transform: uppercase;
@@ -238,15 +188,13 @@
       color: #e5e7eb;
       background: rgba(15,23,42,0.7);
     }
-
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 14px;
     }
-
     .btn-primary {
       border-radius: 999px;
       background: var(--accent);
@@ -259,13 +207,11 @@
       cursor: pointer;
       transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, background 0.15s ease-out;
     }
-
     .btn-primary:hover {
       transform: translateY(-1px);
       box-shadow: 0 20px 38px rgba(248,113,22,0.45);
       background: #f97316;
     }
-
     .btn-ghost {
       border-radius: 999px;
       padding: 9px 20px;
@@ -278,12 +224,10 @@
       align-items: center;
       gap: 6px;
     }
-
     .hero-note {
       font-size: 0.8rem;
       color: #9ca3af;
     }
-
     .hero-media {
       background: rgba(15,23,42,0.9);
       border-radius: var(--radius-lg);
@@ -291,7 +235,6 @@
       padding: 18px;
       box-shadow: var(--shadow-soft);
     }
-
     .hero-photo {
       border-radius: 14px;
       overflow: hidden;
@@ -302,14 +245,12 @@
       align-items: stretch;
       justify-content: stretch;
     }
-
     .hero-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       filter: saturate(1.1);
     }
-
     .hero-badge {
       position: absolute;
       left: 16px;
@@ -325,7 +266,6 @@
       border: 1px solid rgba(148,163,184,0.6);
       backdrop-filter: blur(10px);
     }
-
     .hero-badge-dot {
       width: 10px;
       height: 10px;
@@ -333,7 +273,6 @@
       background: #22c55e;
       box-shadow: 0 0 0 4px rgba(34,197,94,0.3);
     }
-
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -342,14 +281,12 @@
       font-size: 0.8rem;
       color: #d1d5db;
     }
-
     .hero-stat {
       padding: 10px 10px;
       border-radius: 12px;
       background: rgba(15,23,42,0.9);
       border: 1px solid rgba(148,163,184,0.4);
     }
-
     .hero-stat strong {
       display: block;
       font-size: 0.9rem;
@@ -357,47 +294,35 @@
     }
 
     /* SECTIONS */
-
-    section {
-      padding: 70px 0;
-    }
-
+    section { padding: 70px 0; }
     .section-header {
       max-width: 720px;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
     }
-
     .section-eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.2em;
       font-size: 0.75rem;
       color: var(--text-muted);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-
     .section-title {
       font-size: 1.6rem;
-      margin: 0 0 8px;
+      margin: 0 0 4px;
     }
-
     .section-subtitle {
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       color: var(--text-muted);
       margin: 0;
     }
 
     /* SERVICES */
-
-    #sluzby {
-      background: var(--bg-light);
-    }
-
+    #sluzby { background: var(--bg-light); }
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
-
     .service-card {
       background: #ffffff;
       border-radius: var(--radius-sm);
@@ -406,96 +331,70 @@
       box-shadow: 0 10px 24px rgba(15,23,42,0.04);
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
       position: relative;
       overflow: hidden;
     }
-
     .service-label {
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--text-muted);
     }
-
     .service-title {
       margin: 0;
       font-size: 1.02rem;
     }
-
     .service-desc {
-      margin: 4px 0 0;
-      font-size: 0.92rem;
+      margin: 2px 0 0;
+      font-size: 0.9rem;
       color: var(--text-muted);
     }
-
-    .service-tags {
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      font-size: 0.78rem;
-    }
-
-    .service-tag {
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: #b45309;
-    }
-
     .service-corner {
       position: absolute;
       right: -40px;
       top: -40px;
       width: 90px;
       height: 90px;
-      background: radial-gradient(circle at center, rgba(249,115,22,0.3) 0, transparent 70%);
+      background: radial-gradient(circle at center, rgba(249,115,22,0.25) 0, transparent 70%);
       opacity: 0.4;
     }
 
-    /* REALIZACE (GALLERY) */
-
+    /* REALIZACE */
     .gallery-grid {
       display: grid;
       grid-template-columns: 2fr 1.2fr;
       gap: 22px;
       align-items: stretch;
     }
-
     .gallery-main {
       border-radius: var(--radius-lg);
       overflow: hidden;
       position: relative;
       background: #020617;
     }
-
     .gallery-main img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       max-height: 360px;
     }
-
     .gallery-strip {
       display: grid;
       grid-template-rows: repeat(3, minmax(0, 1fr));
       gap: 10px;
     }
-
     .gallery-item {
       border-radius: 14px;
       overflow: hidden;
       position: relative;
       background: #020617;
     }
-
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
     .gallery-badge {
       position: absolute;
       left: 14px;
@@ -510,51 +409,35 @@
     }
 
     /* ABOUT */
-
     .about-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 36px;
-      align-items: center;
+      gap: 32px;
+      align-items: flex-start;
     }
-
     .about-card {
       border-radius: var(--radius-lg);
-      padding: 22px 22px 26px;
+      padding: 18px 20px 22px;
       border: 1px solid var(--card-border);
       background: #ffffff;
       box-shadow: 0 16px 32px rgba(15,23,42,0.06);
-    }
-
-    .about-list {
-      margin: 14px 0 0;
-      padding-left: 18px;
       font-size: 0.95rem;
-    }
-
-    .about-list li {
-      margin-bottom: 6px;
       color: var(--text-muted);
     }
-
-    .about-highlight {
-      margin-top: 16px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: var(--accent-soft);
-      font-size: 0.9rem;
-      color: #92400e;
+    .about-list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      font-size: 0.92rem;
     }
+    .about-list li { margin-bottom: 5px; }
 
     /* CONTACT */
-
     #kontakt {
       background: #0b1120;
       color: #e5e7eb;
       position: relative;
       overflow: hidden;
     }
-
     #kontakt::before {
       content: "";
       position: absolute;
@@ -563,51 +446,38 @@
       opacity: 0.9;
       pointer-events: none;
     }
-
     .contact-inner {
       position: relative;
       z-index: 1;
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 32px;
+      gap: 28px;
       align-items: flex-start;
     }
-
     .contact-card {
       border-radius: var(--radius-lg);
       background: rgba(15,23,42,0.9);
       border: 1px solid rgba(148,163,184,0.55);
-      padding: 22px 22px 24px;
+      padding: 20px 22px 22px;
       box-shadow: var(--shadow-soft);
     }
-
     .contact-row {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       font-size: 0.95rem;
     }
-
     .contact-row strong {
       display: inline-block;
       width: 80px;
       color: #e5e7eb;
     }
-
-    .contact-row a {
-      color: #f9fafb;
-    }
-
+    .contact-row a { color: #f9fafb; }
     form {
       margin-top: 10px;
       display: grid;
       gap: 10px;
       font-size: 0.9rem;
     }
-
-    label {
-      display: block;
-      margin-bottom: 3px;
-    }
-
+    label { display: block; margin-bottom: 3px; }
     input, textarea {
       width: 100%;
       padding: 9px 10px;
@@ -618,58 +488,27 @@
       font-family: inherit;
       font-size: 0.9rem;
     }
-
     input::placeholder,
-    textarea::placeholder {
-      color: #9ca3af;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 110px;
-    }
-
+    textarea::placeholder { color: #9ca3af; }
+    textarea { resize: vertical; min-height: 110px; }
     .contact-note {
       font-size: 0.8rem;
       color: #9ca3af;
       margin-top: 6px;
     }
-
     .contact-side-note {
       font-size: 0.9rem;
       color: #cbd5f5;
       max-width: 260px;
     }
 
-    .contact-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.7);
-      padding: 6px 10px;
-      font-size: 0.78rem;
-      margin-bottom: 12px;
-      color: #e5e7eb;
-      background: rgba(15,23,42,0.9);
-    }
-
-    .contact-bullet {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-
     /* FOOTER */
-
     footer {
       background: #020617;
       color: #6b7280;
       font-size: 0.8rem;
       padding: 14px 0 18px;
     }
-
     .footer-inner {
       display: flex;
       align-items: center;
@@ -679,7 +518,6 @@
     }
 
     /* RESPONSIVE */
-
     @media (max-width: 960px) {
       .hero-grid,
       .about-grid,
@@ -687,39 +525,20 @@
       .gallery-grid {
         grid-template-columns: minmax(0, 1fr);
       }
-      .hero {
-        padding-top: 46px;
-      }
-      .hero-media {
-        order: -1;
-      }
+      .hero { padding-top: 46px; }
+      .hero-media { order: -1; }
     }
-
     @media (max-width: 840px) {
-      .nav-links {
-        display: none;
-      }
-      .nav-burger {
-        display: flex;
-      }
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
     }
-
     @media (max-width: 820px) {
-      .services-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-
     @media (max-width: 640px) {
-      section {
-        padding: 56px 0;
-      }
-      .services-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .section-header {
-        margin-bottom: 26px;
-      }
+      section { padding: 56px 0; }
+      .services-grid { grid-template-columns: minmax(0, 1fr); }
+      .section-header { margin-bottom: 24px; }
     }
   </style>
 </head>
@@ -756,54 +575,53 @@
     <div class="container">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow">Kompletní řemeslné práce</div>
+          <div class="eyebrow">Kompletní řemesla</div>
           <h1 class="hero-title">
-            Od <span>elektřiny</span> po sádrokarton.<br>
+            Elektro, voda, topení, zedničina.<br>
             Jeden řemeslník pro celý dům.
           </h1>
           <p class="hero-subtitle">
-            Elektroinstalace, voda, topení, odpady, zednické práce, sádrokartony, chytré domácnosti i tepelná čerpadla.
-            Poctivě, bezpečně a s důrazem na detail.
+            Udělám instalace i dokončovací práce tak, aby vše fungovalo a dobře vypadalo.
           </p>
           <div class="hero-tags">
             <div class="tag-pill">Novostavby</div>
-            <div class="tag-pill">Rekonstrukce bytů a domů</div>
-            <div class="tag-pill">Servis &amp; opravy</div>
+            <div class="tag-pill">Rekonstrukce</div>
+            <div class="tag-pill">Menší opravy</div>
           </div>
           <div class="hero-actions">
             <button class="btn-primary" onclick="scrollToId('kontakt')">
               Nezávazná poptávka
             </button>
-            <button class="btn-ghost" onclick="scrollToId('realizace')">
-              Ukázky realizací →
+            <button class="btn-ghost" onclick="scrollToId('sluzby')">
+              Co všechno dělám →
             </button>
           </div>
           <div class="hero-note">
-            Domluvíme termín, projdeme možnosti a připravím řešení na míru vašemu rozpočtu.
+            Stačí stručně napsat, o jaký byt / dům jde a co potřebujete.
           </div>
         </div>
 
         <aside class="hero-media">
           <div class="hero-photo">
-            <!-- Nahraď svým obrázkem z realizace -->
-            <img src="foto-hero.jpg" alt="Ukázka řemeslných prací – elektroinstalace a montáž">
+            <!-- Nahraď svým obrázkem -->
+            <img src="foto-hero.jpg" alt="Ukázka řemeslných prací">
             <div class="hero-badge">
               <span class="hero-badge-dot"></span>
-              Na stavbě osobně, od začátku do konce
+              Osobně na každé zakázce
             </div>
           </div>
           <div class="hero-stats">
             <div class="hero-stat">
-              <strong>Elektro &amp; voda</strong>
-              kompletní instalace i drobné opravy
+              <strong>Elektro</strong>
+              rozvody, zásuvky, světla
+            </div>
+            <div class="hero-stat">
+              <strong>Voda &amp; topení</strong>
+              koupelny, radiátory, TČ
             </div>
             <div class="hero-stat">
               <strong>Interiér</strong>
-              sádrokarton, omítky, úpravy zdí
-            </div>
-            <div class="hero-stat">
-              <strong>Topení &amp; TČ</strong>
-              radiátory, podlahovka, tepelná čerpadla
+              sádrokarton, úpravy zdí
             </div>
           </div>
         </aside>
@@ -816,10 +634,9 @@
     <div class="container">
       <div class="section-header">
         <div class="section-eyebrow">Služby</div>
-        <h2 class="section-title">Jedna firma, všechny klíčové profese na stavbě</h2>
+        <h2 class="section-title">Hlavní profese, které nabízím</h2>
         <p class="section-subtitle">
-          Spojuji elektroinstalace, vodu, topení, odpady, sádrokartony i zednické práce.
-          Díky tomu se práce lépe koordinují a nevznikají zbytečné prodlevy.
+          Vše nejdůležitější pro technickou část domu i dokončení interiéru.
         </p>
       </div>
 
@@ -829,106 +646,64 @@
           <div class="service-label">Elektro</div>
           <h3 class="service-title">Elektrikářské práce</h3>
           <p class="service-desc">
-            Kompletní elektroinstalace v novostavbách i při rekonstrukcích. Zapojování zásuvek,
-            světel, jističů, rozvaděčů i chytrého ovládání.
+            Nové rozvody, výměny starých instalací, zásuvky, světla, rozvaděče.
           </p>
-          <div class="service-tags">
-            <span class="service-tag">nové rozvody</span>
-            <span class="service-tag">rekonstrukce</span>
-            <span class="service-tag">revize</span>
-          </div>
         </article>
 
         <article class="service-card">
           <div class="service-label">Voda</div>
           <h3 class="service-title">Vodoinstalace &amp; koupelny</h3>
           <p class="service-desc">
-            Rozvody vody, odpady, montáž baterií, sprch, WC a kompletní příprava koupelen
-            včetně napojení na kanalizaci.
+            Rozvody vody a odpadů, příprava koupelen, montáž zařizovacích předmětů.
           </p>
-          <div class="service-tags">
-            <span class="service-tag">rozvody vody</span>
-            <span class="service-tag">koupelny</span>
-          </div>
         </article>
 
         <article class="service-card">
           <div class="service-label">Topení</div>
           <h3 class="service-title">Topenářské práce</h3>
           <p class="service-desc">
-            Instalace radiátorů, podlahového topení a rozvodů topné vody. Napojení na kotel
-            nebo tepelné čerpadlo, nastavení regulace.
+            Radiátory, podlahové topení, rozvody topné vody, napojení na zdroj tepla.
           </p>
-          <div class="service-tags">
-            <span class="service-tag">radiátory</span>
-            <span class="service-tag">podlahovka</span>
-          </div>
         </article>
 
         <article class="service-card">
           <div class="service-label">Tepelná čerpadla</div>
-          <h3 class="service-title">Montáž tepelných čerpadel</h3>
+          <h3 class="service-title">Montáž TČ</h3>
           <p class="service-desc">
-            Kompletní instalace tepelných čerpadel – umístění jednotek, napojení na topný
-            systém, zprovoznění a nastavení.
+            Umístění jednotek, napojení na topení a zprovoznění systému.
           </p>
-          <div class="service-tags">
-            <span class="service-tag">instalace</span>
-            <span class="service-tag">zprovoznění</span>
-          </div>
         </article>
 
         <article class="service-card">
           <div class="service-label">Odpady</div>
           <h3 class="service-title">Odpady &amp; kanalizace</h3>
           <p class="service-desc">
-            Instalace odpadních systémů, svodů, sifonů a napojení na kanalizaci. Kontrola spádu i těsnosti,
-            opravy starých rozvodů.
+            Vnitřní odpady, svody, napojení na kanalizaci, opravy starších rozvodů.
           </p>
-          <div class="service-tags">
-            <span class="service-tag">kanalizace</span>
-            <span class="service-tag">rekonstrukce</span>
-          </div>
         </article>
 
         <article class="service-card">
           <div class="service-label">Interiér</div>
           <h3 class="service-title">Sádrokartony &amp; zednické práce</h3>
           <p class="service-desc">
-            Sádrokartonové příčky, podhledy, omítky, obklady a další zednické úpravy pro
-            čistý a funkční interiér.
+            Příčky, podhledy, zarovnání a úpravy zdí před malováním.
           </p>
-          <div class="service-tags">
-            <span class="service-tag">příčky</span>
-            <span class="service-tag">omítky</span>
-            <span class="service-tag">úpravy zdí</span>
-          </div>
         </article>
 
         <article class="service-card">
           <div class="service-label">Chytrá domácnost</div>
-          <h3 class="service-title">Chytré domácnosti &amp; automatizace</h3>
+          <h3 class="service-title">Smart prvky</h3>
           <p class="service-desc">
-            Ovládání světel, topení, žaluzií nebo bezpečnostních prvků přes mobil.
-            Instalace kamer, čidel a chytrých prvků.
+            Ovládání světel a topení přes mobil, základní automatizace domácnosti.
           </p>
-          <div class="service-tags">
-            <span class="service-tag">smart home</span>
-            <span class="service-tag">bezpečnost</span>
-          </div>
         </article>
 
         <article class="service-card">
           <div class="service-label">Servis</div>
-          <h3 class="service-title">Opravy &amp; menší zakázky</h3>
+          <h3 class="service-title">Menší opravy</h3>
           <p class="service-desc">
-            Vyhořelá zásuvka, prasklé potrubí nebo kapající baterie? Postarám se i o menší
-            zakázky a rychlé opravy.
+            Opravy zásuvek, světel, kapajících baterií nebo drobných závad.
           </p>
-          <div class="service-tags">
-            <span class="service-tag">rychlý zásah</span>
-            <span class="service-tag">diagnostika</span>
-          </div>
         </article>
       </div>
     </div>
@@ -939,30 +714,29 @@
     <div class="container">
       <div class="section-header">
         <div class="section-eyebrow">Realizace</div>
-        <h2 class="section-title">Reálné zakázky, ne fotky z fotobanky</h2>
+        <h2 class="section-title">Ukázky práce z reálných zakázek</h2>
         <p class="section-subtitle">
-          Fotografie ukazují vybrané projekty, na kterých jsem pracoval – elektroinstalace, koupelny,
-          topení i sádrokartonové úpravy. Obrázky níže nahraďte vlastními fotkami.
+          Fotky nahraďte vlastními z elektro, vody, topení, koupelen a sádrokartonů.
         </p>
       </div>
 
       <div class="gallery-grid">
         <div class="gallery-main">
-          <img src="realizace-hlavni.jpg" alt="Kompletní rekonstrukce – elektro, voda a interiér">
+          <img src="realizace-hlavni.jpg" alt="Kompletní rekonstrukce">
           <div class="gallery-badge">Kompletní rekonstrukce bytu</div>
         </div>
         <div class="gallery-strip">
           <div class="gallery-item">
-            <img src="realizace-elektro.jpg" alt="Detail elektroinstalace v rozvaděči">
-            <div class="gallery-badge">Elektroinstalace</div>
+            <img src="realizace-elektro.jpg" alt="Elektroinstalace">
+            <div class="gallery-badge">Elektro</div>
           </div>
           <div class="gallery-item">
-            <img src="realizace-koupelna.jpg" alt="Hotová koupelna po rekonstrukci">
+            <img src="realizace-koupelna.jpg" alt="Koupelna">
             <div class="gallery-badge">Koupelna</div>
           </div>
           <div class="gallery-item">
-            <img src="realizace-topeni.jpg" alt="Instalace podlahového topení">
-            <div class="gallery-badge">Topení &amp; TČ</div>
+            <img src="realizace-topeni.jpg" alt="Topení">
+            <div class="gallery-badge">Topení</div>
           </div>
         </div>
       </div>
@@ -974,38 +748,33 @@
     <div class="container">
       <div class="section-header">
         <div class="section-eyebrow">O mně</div>
-        <h2 class="section-title">Poctivé řemeslo a domluva na prvním místě</h2>
+        <h2 class="section-title">Jeden kontakt, více profesí</h2>
         <p class="section-subtitle">
-          Pracuji tak, jak bych chtěl, aby ostatní pracovali u mě doma. S důrazem na detail,
-          čistotu práce a férovou komunikaci.
+          Nehoním po stavbě pět různých firem – většinu důležitých prací řeším sám.
         </p>
       </div>
 
       <div class="about-grid">
         <div class="about-card">
           <p>
-            Řemeslu se věnuji dlouhodobě a spojuji několik profesí, které se na stavbách nejčastěji potkávají:
-            elektro, voda, topení, sádrokarton a zednické práce. Díky tomu nemusíte řešit pět různých firem a
-            zdlouhavou koordinaci.
+            Dělám profese, které se na stavbě nejčastěji potkávají: elektro, voda, topení,
+            odpady, sádrokarton i základní zednické práce. Díky tomu se práce lépe navazují
+            a nevznikají zbytečné mezery.
           </p>
           <ul class="about-list">
-            <li>důraz na bezpečnost elektroinstalací a správné postupy</li>
-            <li>praktická technická řešení, ne zbytečně složité instalace</li>
-            <li>domluvené termíny a férové jednání bez překvapení v ceně</li>
+            <li>domluva přímo s jedním řemeslníkem</li>
+            <li>reálné termíny a průběžná komunikace</li>
+            <li>práce dělaná tak, aby u ní šlo v klidu navázat dalšími profesemi</li>
           </ul>
-          <div class="about-highlight">
-            Každou zakázku beru osobně – od první prohlídky přes návrh řešení až po předání
-            hotové práce jsem vaším přímým kontaktem.
-          </div>
         </div>
         <div>
           <p><strong>Typické zakázky:</strong></p>
           <ul class="about-list">
-            <li>kompletní elektro + voda + topení v novostavbě</li>
-            <li>rekonstrukce bytu včetně koupelny a kuchyně</li>
-            <li>výmena rozvodů v rodinném domě</li>
-            <li>instalace tepelného čerpadla a napojení na stávající topení</li>
-            <li>domácí dílny a garáže – zásuvkové okruhy, osvětlení, rozvody</li>
+            <li>kompletní rozvody v bytě / domě</li>
+            <li>rekonstrukce jádra, koupelen, kuchyní</li>
+            <li>příprava pro kuchyňskou linku a spotřebiče</li>
+            <li>montáž tepelného čerpadla a úpravy topení</li>
+            <li>menší opravy, které nechcete řešit sami</li>
           </ul>
         </div>
       </div>
@@ -1018,10 +787,9 @@
       <div class="contact-inner">
         <div class="contact-card">
           <div class="section-eyebrow" style="color:#9ca3af;">Kontakt</div>
-          <h2 class="section-title" style="color:#f9fafb; margin-bottom:6px;">Poptávka nebo dotaz k realizaci</h2>
-          <p class="section-subtitle" style="color:#d1d5db; margin-bottom:14px;">
-            Napište pár vět o tom, co řešíte – rekonstrukci, novostavbu nebo menší opravu.
-            Ozvu se s návrhem dalšího postupu.
+          <h2 class="section-title" style="color:#f9fafb; margin-bottom:6px;">Napište, co potřebujete vyřešit</h2>
+          <p class="section-subtitle" style="color:#d1d5db; margin-bottom:12px;">
+            Stručný popis a pár fotek většinou stačí k prvnímu odhadu.
           </p>
 
           <div class="contact-row">
@@ -1034,13 +802,12 @@
           </div>
           <div class="contact-row">
             <strong>Lokalita:</strong>
-            <!-- DOPLŇ -->
             <span>např. Brno a okolí</span>
           </div>
 
-          <form onsubmit="event.preventDefault(); alert('Zde doplňte vlastní zpracování formuláře (e-mail, systém, atd.).');">
+          <form onsubmit="event.preventDefault(); alert('Zde doplňte vlastní zpracování formuláře (e-mail, systém atd.).');">
             <div>
-              <label for="name">Jméno a příjmení</label>
+              <label for="name">Jméno</label>
               <input type="text" id="name" name="name" placeholder="Jak vám mám říkat?" required>
             </div>
             <div>
@@ -1048,26 +815,22 @@
               <input type="text" id="contact" name="contact" placeholder="Kontakt, na který se vám ozvu" required>
             </div>
             <div>
-              <label for="message">Co potřebujete vyřešit?</label>
-              <textarea id="message" name="message" placeholder="Stručně popište stav (novostavba / rekonstrukce, byt / dům, elektro / voda / topení / jiné)…" required></textarea>
+              <label for="message">Zpráva</label>
+              <textarea id="message" name="message" placeholder="Byt / dům, lokalita, stručný popis prací…" required></textarea>
             </div>
             <button class="btn-primary" type="submit">
-              Odeslat poptávku
+              Odeslat
             </button>
             <div class="contact-note">
-              Odesláním souhlasíte se zpracováním kontaktních údajů pro účely zpětného kontaktování.
+              Údaje slouží jen pro zpětný kontakt k této poptávce.
             </div>
           </form>
         </div>
 
         <div>
-          <div class="contact-pill">
-            <span class="contact-bullet"></span>
-            Ideálně pište i s fotografiemi aktuálního stavu
-          </div>
           <p class="contact-side-note">
-            Čím více informací pošlete (půdorys, fotky, představa rozsahu prací), tím konkrétněji se dá odhadnout čas i cena.
-            U větších zakázek je stejně vždy potřeba osobní prohlídka na místě.
+            Pro přesnější návrh pomůže půdorys nebo fotky stávajícího stavu. U větších
+            zakázek je vždy potřeba osobní prohlídka na místě.
           </p>
         </div>
       </div>
@@ -1081,24 +844,19 @@
         &copy; <span id="year"></span> Řemeslné práce – všechna práva vyhrazena.
       </div>
       <div>
-        Web připraven individuálně – obsah i fotky jsou z reálných zakázek.
+        Web s reálnými fotkami z vaší práce.
       </div>
     </div>
   </footer>
 
   <script>
-    // rok ve footeru
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // jednoduché scrollování na sekce
     function scrollToId(id) {
       const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // jednoduché otevření/zavření menu na mobilech (pokud bys ho chtěl dodělat)
     function toggleNav() {
       const nav = document.querySelector('.nav-links');
       if (!nav) return;
