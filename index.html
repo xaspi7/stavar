@@ -359,7 +359,7 @@
       opacity: 0.4;
     }
 
-    /* REALIZACE – KARUSEL */
+    /* REALIZACE – CONTINUOUS CAROUSEL */
     .gallery-shell {
       border-radius: var(--radius-lg);
       border: 1px solid var(--card-border);
@@ -375,11 +375,11 @@
       font-weight: 600;
       font-size: 1rem;
       margin-bottom: 4px;
-      transition: box-shadow 0.3s ease, color 0.3s ease;
       display: inline-block;
       padding: 4px 10px;
       border-radius: 999px;
       background: #f9fafb;
+      transition: box-shadow 0.3s ease, color 0.3s ease;
     }
     #gallery-job.glow {
       box-shadow: 0 0 0 3px rgba(249,115,22,0.4);
@@ -390,6 +390,7 @@
       color: var(--text-muted);
       margin: 0;
     }
+
     .gallery-viewer {
       margin-top: 16px;
       display: grid;
@@ -404,9 +405,6 @@
       position: relative;
       height: 320px;
       padding: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       box-shadow: 0 0 0 0 rgba(249,115,22,0);
       transition: box-shadow 0.3s ease;
     }
@@ -417,10 +415,12 @@
       width: 100%;
       height: 100%;
       display: flex;
-      transition: transform 0.45s ease-in-out;
+      gap: 8px;                    /* malé mezery mezi fotkami */
+      transition: transform 0.1s linear;
     }
     .gallery-slide {
-      flex: 0 0 100%;
+      flex: 0 0 40%;
+      max-width: 40%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -430,32 +430,12 @@
       max-height: 100%;
       object-fit: contain;
     }
-    .gallery-controls {
-      position: absolute;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-    .gallery-btn {
-      border-radius: 999px;
-      border: none;
-      background: rgba(15,23,42,0.9);
-      color: #e5e7eb;
-      padding: 6px 10px;
-      cursor: pointer;
+
+    .gallery-caption-side {
       font-size: 0.9rem;
+      color: var(--text-muted);
     }
-    .gallery-counter {
-      font-size: 0.82rem;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.9);
-      color: #e5e7eb;
-    }
+
     .gallery-dots {
       margin-top: 10px;
       display: flex;
@@ -476,11 +456,6 @@
       opacity: 1;
       background: var(--accent);
       box-shadow: 0 0 0 3px rgba(249,115,22,0.3);
-    }
-
-    .gallery-caption-side {
-      font-size: 0.9rem;
-      color: var(--text-muted);
     }
 
     /* ABOUT */
@@ -615,6 +590,10 @@
       .services-grid { grid-template-columns: minmax(0, 1fr); }
       .section-header { margin-bottom: 24px; }
       .gallery-image-wrapper { height: 260px; }
+      .gallery-slide {
+        flex: 0 0 70%;
+        max-width: 70%;
+      }
     }
   </style>
 </head>
@@ -784,14 +763,14 @@
     </div>
   </section>
 
-  <!-- REALIZACE – KARUSEL -->
+  <!-- REALIZACE – CONTINUOUS CAROUSEL -->
   <section id="realizace">
     <div class="container">
       <div class="section-header">
         <div class="section-eyebrow">Realizace</div>
         <h2 class="section-title">Ukázky práce – elektro, topení, koupelna, sádrokarton, zedníci</h2>
         <p class="section-subtitle">
-          Fotky jedou za sebou z prava doleva. U snímku „uprostřed“ se na chvíli zvýrazní popisek práce.
+          Fotky jsou v jednom pásu a pomalu odjíždějí doleva. Ta „uprostřed“ se krátce zvýrazní a nahoře se ukáže typ práce.
         </p>
       </div>
 
@@ -806,12 +785,7 @@
         <div class="gallery-viewer">
           <div class="gallery-image-wrapper" id="gallery-wrapper">
             <div class="gallery-track" id="gallery-track">
-              <!-- doplní JS -->
-            </div>
-            <div class="gallery-controls">
-              <button type="button" class="gallery-btn" onclick="manualChange(-1)">◀</button>
-              <span class="gallery-counter" id="gallery-counter">1 / 14</span>
-              <button type="button" class="gallery-btn" onclick="manualChange(1)">▶</button>
+              <!-- slidey doplní JS -->
             </div>
           </div>
           <div class="gallery-caption-side">
@@ -968,7 +942,7 @@
       }
     }
 
-    /* SLIDER DATA – pořadí fotek */
+    /* DATA PRO SLIDER */
     const slides = [
       { src: 'ele.png',    alt: 'Elektroinstalace – rozvaděč 1', title: 'Elektro – rozvaděče a rozvody', text: 'Čisté zapojení rozvaděče a jističů.' },
       { src: 'ele2.png',   alt: 'Elektroinstalace – rozvaděč 2', title: 'Elektro – rozvaděče a rozvody', text: 'Další příklad rozvaděče s řádným uspořádáním vodičů.' },
@@ -986,22 +960,21 @@
       { src: 'reko.png',   alt: 'Rekonstruovaný interiér', title: 'Rekonstrukce – hotový prostor', text: 'Příklad větší rekonstrukce s kombinací více profesí.' }
     ];
 
-    const AUTO_INTERVAL = 4000;
-
-    let currentSlide = 0;
-    let autoTimer = null;
+    const SPEED = 0.4; // px na frame – můžeš si pohrát, když to bude moc rychlé/pomalé
 
     const track = document.getElementById('gallery-track');
+    const wrapperEl = document.getElementById('gallery-wrapper');
     const dotsContainer = document.getElementById('gallery-dots');
-    const counterEl = document.getElementById('gallery-counter');
     const jobEl = document.getElementById('gallery-job');
     const textEl = document.getElementById('gallery-text');
-    const wrapperEl = document.getElementById('gallery-wrapper');
 
-    // vytvoření slideů
-    slides.forEach(s => {
+    // vytvoření slideů (zdvojené, aby šlo plynule loopovat)
+    const loopSlidesData = slides.concat(slides);
+    loopSlidesData.forEach((s, i) => {
+      const idxOriginal = i % slides.length;
       const slide = document.createElement('div');
       slide.className = 'gallery-slide';
+      slide.dataset.index = idxOriginal;
       const img = document.createElement('img');
       img.src = s.src;
       img.alt = s.alt;
@@ -1009,37 +982,47 @@
       track.appendChild(slide);
     });
 
-    // vytvoření bublinek
+    // bublinky – jen indikace, neklikací
     const dots = slides.map((_, i) => {
       const dot = document.createElement('div');
       dot.className = 'gallery-dot';
       dotsContainer.appendChild(dot);
-      dot.addEventListener('click', () => {
-        currentSlide = i;
-        setSlide(currentSlide);
-        startAuto();
-      });
       return dot;
     });
 
-    function setSlide(index) {
-      const s = slides[index];
-      if (!s) return;
+    let offsetX = 0;
+    let firstIndex = 0;       // index v původním poli pro slide, který je úplně vlevo
+    let slideStep = 0;
+    let visibleCount = 1;
+    let lastCenterIndex = -1;
 
-      // pohyb celé "kolejnice"
-      track.style.transform = 'translateX(' + (-index * 100) + '%)';
+    function recalc() {
+      const first = track.firstElementChild;
+      if (!first) return;
+      const rect = first.getBoundingClientRect();
+      const style = window.getComputedStyle(track);
+      const gap = parseFloat(style.gap || style.columnGap || 8);
+      slideStep = rect.width + gap;
 
-      counterEl.textContent = (index + 1) + ' / ' + slides.length;
+      const wrapRect = wrapperEl.getBoundingClientRect();
+      visibleCount = Math.max(1, Math.round(wrapRect.width / slideStep));
+    }
+
+    function updateCenter() {
+      if (!slideStep) recalc();
+      const centerOffset = Math.floor(visibleCount / 2);
+      const centerIndex = (firstIndex + centerOffset) % slides.length;
+      if (centerIndex === lastCenterIndex) return;
+      lastCenterIndex = centerIndex;
+
+      const s = slides[centerIndex];
       jobEl.textContent = s.title;
       textEl.textContent = s.text;
 
-      // aktivní bublinka
       dots.forEach((d, i) => {
-        if (i === index) d.classList.add('active');
-        else d.classList.remove('active');
+        d.classList.toggle('active', i === centerIndex);
       });
 
-      // glow efekt
       wrapperEl.classList.add('glow');
       jobEl.classList.add('glow');
       setTimeout(() => {
@@ -1048,27 +1031,35 @@
       }, 700);
     }
 
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      setSlide(currentSlide);
+    function tick() {
+      if (!slideStep) recalc();
+
+      offsetX -= SPEED;
+      if (Math.abs(offsetX) >= slideStep) {
+        offsetX += slideStep;
+        // přesuneme první slide na konec – nekonečný vlak
+        track.appendChild(track.firstElementChild);
+        firstIndex = (firstIndex + 1) % slides.length;
+        updateCenter();
+      }
+
+      track.style.transform = 'translateX(' + offsetX + 'px)';
+      requestAnimationFrame(tick);
     }
 
-    function startAuto() {
-      if (autoTimer) clearInterval(autoTimer);
-      autoTimer = setInterval(nextSlide, AUTO_INTERVAL);
-    }
+    window.addEventListener('resize', () => {
+      const prevStep = slideStep;
+      recalc();
+      // trochu znormalizujeme posun podle nové šířky
+      if (prevStep && slideStep) {
+        offsetX = offsetX * (slideStep / prevStep);
+      }
+    });
 
-    function manualChange(direction) {
-      currentSlide = (currentSlide + direction + slides.length) % slides.length;
-      setSlide(currentSlide);
-      startAuto();
-    }
-
-    window.manualChange = manualChange;
-
-    // inicializace
-    setSlide(currentSlide);
-    startAuto();
+    // start
+    recalc();
+    updateCenter();
+    requestAnimationFrame(tick);
   </script>
 </body>
 </html>
