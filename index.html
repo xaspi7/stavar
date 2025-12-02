@@ -13,7 +13,6 @@
       --bg-dark: #0f172a;
       --bg-light: #f5f5f7;
       --accent: #f97316;
-      --accent-soft: rgba(249,115,22,0.08);
       --text-main: #111827;
       --text-muted: #6b7280;
       --card-border: #e5e7eb;
@@ -360,7 +359,7 @@
       opacity: 0.4;
     }
 
-    /* REALIZACE – JEDEN SLIDER */
+    /* REALIZACE – KARUSEL */
     .gallery-shell {
       border-radius: var(--radius-lg);
       border: 1px solid var(--card-border);
@@ -368,7 +367,31 @@
       box-shadow: 0 16px 32px rgba(15,23,42,0.06);
       padding: 18px 18px 20px;
     }
+    .gallery-caption-top {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    #gallery-job {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 4px;
+      transition: box-shadow 0.3s ease, color 0.3s ease;
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #f9fafb;
+    }
+    #gallery-job.glow {
+      box-shadow: 0 0 0 3px rgba(249,115,22,0.4);
+      color: #111827;
+    }
+    #gallery-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
     .gallery-viewer {
+      margin-top: 16px;
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
       gap: 16px;
@@ -379,20 +402,33 @@
       overflow: hidden;
       background: #020617;
       position: relative;
-      height: 320px;              /* pevná výška, aby to neskákalo */
+      height: 320px;
+      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px;              /* fotka trochu menší od krajů */
+      box-shadow: 0 0 0 0 rgba(249,115,22,0);
+      transition: box-shadow 0.3s ease;
     }
-    #gallery-image {
+    .gallery-image-wrapper.glow {
+      box-shadow: 0 0 0 3px rgba(249,115,22,0.4);
+    }
+    .gallery-track {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      transition: transform 0.45s ease-in-out;
+    }
+    .gallery-slide {
+      flex: 0 0 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gallery-slide img {
       max-width: 100%;
       max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;        /* žádné ořezávání */
-      transition: opacity 0.4s ease-in-out;
-      opacity: 1;
+      object-fit: contain;
     }
     .gallery-controls {
       position: absolute;
@@ -407,7 +443,7 @@
     .gallery-btn {
       border-radius: 999px;
       border: none;
-      background: rgba(15,23,42,0.85);
+      background: rgba(15,23,42,0.9);
       color: #e5e7eb;
       padding: 6px 10px;
       cursor: pointer;
@@ -417,20 +453,34 @@
       font-size: 0.82rem;
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(15,23,42,0.85);
+      background: rgba(15,23,42,0.9);
       color: #e5e7eb;
     }
-    .gallery-caption {
+    .gallery-dots {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+    .gallery-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      opacity: 0.4;
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+    }
+    .gallery-dot.active {
+      width: 12px;
+      height: 12px;
+      opacity: 1;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(249,115,22,0.3);
+    }
+
+    .gallery-caption-side {
       font-size: 0.9rem;
       color: var(--text-muted);
-    }
-    .gallery-caption-title {
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: var(--text-main);
-    }
-    .gallery-caption-body {
-      margin: 0;
     }
 
     /* ABOUT */
@@ -564,7 +614,7 @@
       section { padding: 56px 0; }
       .services-grid { grid-template-columns: minmax(0, 1fr); }
       .section-header { margin-bottom: 24px; }
-      .gallery-image-wrapper { height: 260px; } /* na mobilu o něco nižší */
+      .gallery-image-wrapper { height: 260px; }
     }
   </style>
 </head>
@@ -734,33 +784,44 @@
     </div>
   </section>
 
-  <!-- REALIZACE – SLIDER -->
+  <!-- REALIZACE – KARUSEL -->
   <section id="realizace">
     <div class="container">
       <div class="section-header">
         <div class="section-eyebrow">Realizace</div>
         <h2 class="section-title">Ukázky práce – elektro, topení, koupelna, sádrokarton, zedníci</h2>
         <p class="section-subtitle">
-          Fotky se automaticky střídají v pevném pořadí. Šipkami můžete kdykoliv přepnout na další / předchozí snímek.
+          Fotky jedou za sebou z prava doleva. U snímku „uprostřed“ se na chvíli zvýrazní popisek práce.
         </p>
       </div>
 
       <div class="gallery-shell">
+        <div class="gallery-caption-top">
+          <div id="gallery-job">Elektro – rozvaděče a rozvody</div>
+          <p id="gallery-text">
+            Čisté zapojení rozvaděče a jističů.
+          </p>
+        </div>
+
         <div class="gallery-viewer">
-          <div class="gallery-image-wrapper">
-            <img id="gallery-image" src="ele.png" alt="Elektro – rozvaděč">
+          <div class="gallery-image-wrapper" id="gallery-wrapper">
+            <div class="gallery-track" id="gallery-track">
+              <!-- doplní JS -->
+            </div>
             <div class="gallery-controls">
               <button type="button" class="gallery-btn" onclick="manualChange(-1)">◀</button>
               <span class="gallery-counter" id="gallery-counter">1 / 14</span>
               <button type="button" class="gallery-btn" onclick="manualChange(1)">▶</button>
             </div>
           </div>
-          <div class="gallery-caption">
-            <div class="gallery-caption-title" id="gallery-title">Elektro – rozvaděče a rozvody</div>
-            <p class="gallery-caption-body" id="gallery-text">
-              Ukázky čistě zapojených rozvaděčů a elektroinstalace v interiéru.
-            </p>
+          <div class="gallery-caption-side">
+            Postupně jsou vidět elektroinstalace, topení, rozvody vody, koupelna, sádrokartony
+            i zednické práce. Vše jsou reálné fotky z hotových nebo rozpracovaných zakázek.
           </div>
+        </div>
+
+        <div class="gallery-dots" id="gallery-dots">
+          <!-- bublinky doplní JS -->
         </div>
       </div>
     </div>
@@ -909,119 +970,82 @@
 
     /* SLIDER DATA – pořadí fotek */
     const slides = [
-      {
-        src: 'ele.png',
-        alt: 'Elektroinstalace – rozvaděč 1',
-        title: 'Elektro – rozvaděče a rozvody',
-        text: 'Čisté zapojení rozvaděče a jističů.'
-      },
-      {
-        src: 'ele2.png',
-        alt: 'Elektroinstalace – rozvaděč 2',
-        title: 'Elektro – rozvaděče a rozvody',
-        text: 'Další příklad rozvaděče s řádným uspořádáním vodičů.'
-      },
-      {
-        src: 'ele3.png',
-        alt: 'Elektroinstalace – rozvod ve zdi',
-        title: 'Elektro – příprava rozvodů',
-        text: 'Příprava elektro rozvodů ve zdi před zapravením.'
-      },
-      {
-        src: 'topeni.png',
-        alt: 'Rozvody topení v místnosti',
-        title: 'Topení – rozvody',
-        text: 'Rozvody topení v technické místnosti.'
-      },
-      {
-        src: 'topeni2.png',
-        alt: 'Technická místnost s bojlerem a rozvody',
-        title: 'Topení – technická místnost',
-        text: 'Technická místnost s bojlerem a napojením rozvodů.'
-      },
-      {
-        src: 'topeni3.png',
-        alt: 'Topenářské rozvody a armatury',
-        title: 'Topení – vedení a armatury',
-        text: 'Detail topenářských rozvodů a armatur.'
-      },
-      {
-        src: 'koupelna.png',
-        alt: 'Instalace v koupelně',
-        title: 'Koupelna – příprava instalací',
-        text: 'Příprava rozvodů a vývodů pro koupelnu.'
-      },
-      {
-        src: 'sadro.jpg',
-        alt: 'Sádrokarton – hotová místnost se střešním oknem',
-        title: 'Sádrokarton – hotový pokoj',
-        text: 'Podkrovní místnost se sádrokartonem a střešním oknem.'
-      },
-      {
-        src: 'sadro2.jpg',
-        alt: 'Sádrokarton – konstrukce a rozvody',
-        title: 'Sádrokarton – montáž konstrukce',
-        text: 'Montáž sádrokartonové konstrukce a vedení rozvodů.'
-      },
-      {
-        src: 'sadro4.jpg',
-        alt: 'Sádrokarton – hotové šikminy',
-        title: 'Sádrokarton – šikminy a podhledy',
-        text: 'Dokončené šikminy a podhledy před malbou.'
-      },
-      {
-        src: 'zednik.jpg',
-        alt: 'Fasáda domu',
-        title: 'Zednické práce – fasáda',
-        text: 'Zateplená a upravená fasáda rodinného domu.'
-      },
-      {
-        src: 'zednik2.jpg',
-        alt: 'Interiérová stěna s obkladem',
-        title: 'Zednické práce – interiér',
-        text: 'Obložená stěna a připravený interiér.'
-      },
-      {
-        src: 'zednik3.jpg',
-        alt: 'Schodiště a omítky',
-        title: 'Zednické práce – omítky',
-        text: 'Schodiště a omítky před dokončením interiéru.'
-      },
-      {
-        src: 'reko.png',
-        alt: 'Rekonstruovaný interiér',
-        title: 'Rekonstrukce – hotový prostor',
-        text: 'Příklad větší rekonstrukce s kombinací více profesí.'
-      }
+      { src: 'ele.png',    alt: 'Elektroinstalace – rozvaděč 1', title: 'Elektro – rozvaděče a rozvody', text: 'Čisté zapojení rozvaděče a jističů.' },
+      { src: 'ele2.png',   alt: 'Elektroinstalace – rozvaděč 2', title: 'Elektro – rozvaděče a rozvody', text: 'Další příklad rozvaděče s řádným uspořádáním vodičů.' },
+      { src: 'ele3.png',   alt: 'Elektroinstalace – rozvod ve zdi', title: 'Elektro – příprava rozvodů', text: 'Příprava elektro rozvodů ve zdi před zapravením.' },
+      { src: 'topeni.png', alt: 'Rozvody topení v místnosti', title: 'Topení – rozvody', text: 'Rozvody topení v technické místnosti.' },
+      { src: 'topeni2.png',alt: 'Technická místnost s bojlerem a rozvody', title: 'Topení – technická místnost', text: 'Technická místnost s bojlerem a napojením rozvodů.' },
+      { src: 'topeni3.png',alt: 'Topenářské rozvody a armatury', title: 'Topení – vedení a armatury', text: 'Detail topenářských rozvodů a armatur.' },
+      { src: 'koupelna.png', alt: 'Instalace v koupelně', title: 'Koupelna – příprava instalací', text: 'Příprava rozvodů a vývodů pro koupelnu.' },
+      { src: 'sadro.jpg',  alt: 'Sádrokarton – hotová místnost se střešním oknem', title: 'Sádrokarton – hotový pokoj', text: 'Podkrovní místnost se sádrokartonem a střešním oknem.' },
+      { src: 'sadro2.jpg', alt: 'Sádrokarton – konstrukce a rozvody', title: 'Sádrokarton – montáž konstrukce', text: 'Montáž sádrokartonové konstrukce a vedení rozvodů.' },
+      { src: 'sadro4.jpg', alt: 'Sádrokarton – hotové šikminy', title: 'Sádrokarton – šikminy a podhledy', text: 'Dokončené šikminy a podhledy před malbou.' },
+      { src: 'zednik.jpg', alt: 'Fasáda domu', title: 'Zednické práce – fasáda', text: 'Zateplená a upravená fasáda rodinného domu.' },
+      { src: 'zednik2.jpg',alt: 'Interiérová stěna s obkladem', title: 'Zednické práce – interiér', text: 'Obložená stěna a připravený interiér.' },
+      { src: 'zednik3.jpg',alt: 'Schodiště a omítky', title: 'Zednické práce – omítky', text: 'Schodiště a omítky před dokončením interiéru.' },
+      { src: 'reko.png',   alt: 'Rekonstruovaný interiér', title: 'Rekonstrukce – hotový prostor', text: 'Příklad větší rekonstrukce s kombinací více profesí.' }
     ];
 
-    const AUTO_INTERVAL = 4000; // ms
+    const AUTO_INTERVAL = 4000;
 
     let currentSlide = 0;
     let autoTimer = null;
 
-    const imgEl = document.getElementById('gallery-image');
+    const track = document.getElementById('gallery-track');
+    const dotsContainer = document.getElementById('gallery-dots');
     const counterEl = document.getElementById('gallery-counter');
-    const titleEl = document.getElementById('gallery-title');
+    const jobEl = document.getElementById('gallery-job');
     const textEl = document.getElementById('gallery-text');
+    const wrapperEl = document.getElementById('gallery-wrapper');
+
+    // vytvoření slideů
+    slides.forEach(s => {
+      const slide = document.createElement('div');
+      slide.className = 'gallery-slide';
+      const img = document.createElement('img');
+      img.src = s.src;
+      img.alt = s.alt;
+      slide.appendChild(img);
+      track.appendChild(slide);
+    });
+
+    // vytvoření bublinek
+    const dots = slides.map((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'gallery-dot';
+      dotsContainer.appendChild(dot);
+      dot.addEventListener('click', () => {
+        currentSlide = i;
+        setSlide(currentSlide);
+        startAuto();
+      });
+      return dot;
+    });
 
     function setSlide(index) {
       const s = slides[index];
       if (!s) return;
 
-      // fade out
-      imgEl.style.opacity = 0;
+      // pohyb celé "kolejnice"
+      track.style.transform = 'translateX(' + (-index * 100) + '%)';
 
+      counterEl.textContent = (index + 1) + ' / ' + slides.length;
+      jobEl.textContent = s.title;
+      textEl.textContent = s.text;
+
+      // aktivní bublinka
+      dots.forEach((d, i) => {
+        if (i === index) d.classList.add('active');
+        else d.classList.remove('active');
+      });
+
+      // glow efekt
+      wrapperEl.classList.add('glow');
+      jobEl.classList.add('glow');
       setTimeout(() => {
-        imgEl.src = s.src;
-        imgEl.alt = s.alt;
-        titleEl.textContent = s.title;
-        textEl.textContent = s.text;
-        counterEl.textContent = (index + 1) + ' / ' + slides.length;
-
-        // fade in
-        imgEl.style.opacity = 1;
-      }, 150);
+        wrapperEl.classList.remove('glow');
+        jobEl.classList.remove('glow');
+      }, 700);
     }
 
     function nextSlide() {
@@ -1037,13 +1061,12 @@
     function manualChange(direction) {
       currentSlide = (currentSlide + direction + slides.length) % slides.length;
       setSlide(currentSlide);
-      startAuto(); // po ručním kliknutí znova spustíme autoplay
+      startAuto();
     }
 
-    window.manualChange = manualChange; // pro onclick v HTML
+    window.manualChange = manualChange;
 
     // inicializace
-    document.getElementById('year').textContent = new Date().getFullYear();
     setSlide(currentSlide);
     startAuto();
   </script>
