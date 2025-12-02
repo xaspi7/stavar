@@ -404,31 +404,35 @@
       background: #020617;
       position: relative;
       height: 320px;
-      padding: 10px;
+      padding: 10px 0;
       box-shadow: 0 0 0 0 rgba(249,115,22,0);
       transition: box-shadow 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .gallery-image-wrapper.glow {
       box-shadow: 0 0 0 3px rgba(249,115,22,0.4);
     }
     .gallery-track {
-      width: 100%;
       height: 100%;
       display: flex;
-      gap: 8px;                    /* malé mezery mezi fotkami */
+      gap: 8px;              /* téměř nalepené na sobě */
       transition: transform 0.1s linear;
     }
     .gallery-slide {
-      flex: 0 0 40%;
-      max-width: 40%;
+      flex: 0 0 260px;       /* pevná šířka = žádné poskakování */
+      max-width: 260px;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .gallery-slide img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;     /* lehce se ořízne, ale žádné černé pruhy */
+      border-radius: 12px;
     }
 
     .gallery-caption-side {
@@ -591,8 +595,8 @@
       .section-header { margin-bottom: 24px; }
       .gallery-image-wrapper { height: 260px; }
       .gallery-slide {
-        flex: 0 0 70%;
-        max-width: 70%;
+        flex: 0 0 210px;
+        max-width: 210px;
       }
     }
   </style>
@@ -960,7 +964,8 @@
       { src: 'reko.png',   alt: 'Rekonstruovaný interiér', title: 'Rekonstrukce – hotový prostor', text: 'Příklad větší rekonstrukce s kombinací více profesí.' }
     ];
 
-    const SPEED = 0.4; // px na frame – můžeš si pohrát, když to bude moc rychlé/pomalé
+    const SPEED = 0.25; // px na frame
+    const GAP = 8;      // musí sedět s CSS gap
 
     const track = document.getElementById('gallery-track');
     const wrapperEl = document.getElementById('gallery-wrapper');
@@ -968,7 +973,7 @@
     const jobEl = document.getElementById('gallery-job');
     const textEl = document.getElementById('gallery-text');
 
-    // vytvoření slideů (zdvojené, aby šlo plynule loopovat)
+    // vytvoření slideů (zdvojené kvůli plynulému loopu)
     const loopSlidesData = slides.concat(slides);
     loopSlidesData.forEach((s, i) => {
       const idxOriginal = i % slides.length;
@@ -982,7 +987,7 @@
       track.appendChild(slide);
     });
 
-    // bublinky – jen indikace, neklikací
+    // bublinky – indikátor
     const dots = slides.map((_, i) => {
       const dot = document.createElement('div');
       dot.className = 'gallery-dot';
@@ -991,25 +996,21 @@
     });
 
     let offsetX = 0;
-    let firstIndex = 0;       // index v původním poli pro slide, který je úplně vlevo
-    let slideStep = 0;
+    let slideStep = 260 + GAP; // přesněji spočítáme níže
     let visibleCount = 1;
+    let firstIndex = 0;        // index v původním poli pro slide úplně vlevo
     let lastCenterIndex = -1;
 
-    function recalc() {
+    function setupSizes() {
       const first = track.firstElementChild;
       if (!first) return;
       const rect = first.getBoundingClientRect();
-      const style = window.getComputedStyle(track);
-      const gap = parseFloat(style.gap || style.columnGap || 8);
-      slideStep = rect.width + gap;
-
-      const wrapRect = wrapperEl.getBoundingClientRect();
-      visibleCount = Math.max(1, Math.round(wrapRect.width / slideStep));
+      slideStep = rect.width + GAP;
+      visibleCount = Math.max(1, Math.round(wrapperEl.clientWidth / slideStep));
     }
 
     function updateCenter() {
-      if (!slideStep) recalc();
+      if (!slideStep) setupSizes();
       const centerOffset = Math.floor(visibleCount / 2);
       const centerIndex = (firstIndex + centerOffset) % slides.length;
       if (centerIndex === lastCenterIndex) return;
@@ -1019,9 +1020,7 @@
       jobEl.textContent = s.title;
       textEl.textContent = s.text;
 
-      dots.forEach((d, i) => {
-        d.classList.toggle('active', i === centerIndex);
-      });
+      dots.forEach((d, i) => d.classList.toggle('active', i === centerIndex));
 
       wrapperEl.classList.add('glow');
       jobEl.classList.add('glow');
@@ -1032,13 +1031,11 @@
     }
 
     function tick() {
-      if (!slideStep) recalc();
-
       offsetX -= SPEED;
+
       if (Math.abs(offsetX) >= slideStep) {
         offsetX += slideStep;
-        // přesuneme první slide na konec – nekonečný vlak
-        track.appendChild(track.firstElementChild);
+        track.appendChild(track.firstElementChild);  // posuneme první slide na konec
         firstIndex = (firstIndex + 1) % slides.length;
         updateCenter();
       }
@@ -1049,15 +1046,14 @@
 
     window.addEventListener('resize', () => {
       const prevStep = slideStep;
-      recalc();
-      // trochu znormalizujeme posun podle nové šířky
+      setupSizes();
       if (prevStep && slideStep) {
         offsetX = offsetX * (slideStep / prevStep);
       }
     });
 
-    // start
-    recalc();
+    // start slideru
+    setupSizes();
     updateCenter();
     requestAnimationFrame(tick);
   </script>
