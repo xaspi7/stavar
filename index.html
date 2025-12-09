@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Řemeslné práce – elektro, voda, topení, zednické práce</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Kompletní řemeslné práce – elektro, voda, topení, odpady, sádrokartony, zednické práce, chytré domácnosti a tepelná čerpadla.">
+  <meta name="description" content="Elektroinstalace, voda, topení, koupelny, sádrokarton a zednické práce – vše na jednom kontaktu.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -315,48 +315,70 @@
       margin: 0;
     }
 
-    /* SERVICES */
-    #sluzby { background: var(--bg-light); }
+    /* SERVICES – zjednodušené barvy a text */
+    #sluzby {
+      background: #e5e7eb;
+      padding: 70px 0;
+    }
+
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
+
     .service-card {
       background: #ffffff;
-      border-radius: var(--radius-sm);
+      border-radius: 14px;
       padding: 18px 18px 20px;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 10px 24px rgba(15,23,42,0.04);
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 10px 22px rgba(15,23,42,0.08);
       display: flex;
       flex-direction: column;
       gap: 4px;
       position: relative;
       overflow: hidden;
+      transition: transform 0.12s ease-out,
+                  box-shadow 0.12s ease-out,
+                  border-color 0.12s ease-out;
     }
+
+    .service-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(15,23,42,0.12);
+      border-color: #94a3b8;
+    }
+
     .service-label {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: var(--text-muted);
+      color: #9ca3af;
     }
+
     .service-title {
-      margin: 0;
-      font-size: 1.02rem;
-    }
-    .service-desc {
       margin: 2px 0 0;
-      font-size: 0.9rem;
-      color: var(--text-muted);
+      font-size: 1rem;
+      color: #0f172a;
     }
-    .service-corner {
-      position: absolute;
-      right: -40px;
-      top: -40px;
-      width: 90px;
-      height: 90px;
-      background: radial-gradient(circle at center, rgba(249,115,22,0.25) 0, transparent 70%);
-      opacity: 0.4;
+
+    .service-desc {
+      margin: 3px 0 0;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .service-corner { display: none; }
+
+    @media (max-width: 820px) {
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
     /* REALIZACE – slider s kategoriemi */
@@ -572,16 +594,6 @@
       background: #16a34a;
     }
 
-    .contact-row {
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-    }
-    .contact-row strong {
-      display: inline-block;
-      width: 80px;
-      color: #e5e7eb;
-    }
-    .contact-row a { color: #f9fafb; }
     form {
       margin-top: 10px;
       display: grid;
@@ -643,12 +655,8 @@
       .nav-links { display: none; }
       .nav-burger { display: flex; }
     }
-    @media (max-width: 820px) {
-      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
     @media (max-width: 640px) {
       section { padding: 56px 0; }
-      .services-grid { grid-template-columns: minmax(0, 1fr); }
       .section-header { margin-bottom: 24px; }
       .gallery-image-wrapper { height: 260px; }
       .gallery-slide {
@@ -667,7 +675,7 @@
         <div class="brand-mark">R</div>
         <div>
           <div>Řemeslné práce</div>
-          <div style="font-size:0.72rem; font-weight:400; opacity:0.8;">Elektro • voda • topení • zedničina</div>
+          <div style="font-size:0.72rem; font-weight:400; opacity:0.8;">Elektro • voda • topení • zednické práce</div>
         </div>
       </div>
       <nav class="nav-links">
@@ -691,13 +699,12 @@
     <div class="container">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow">Kompletní řemesla</div>
+          <div class="eyebrow">Elektro • voda • topení • zednické práce</div>
           <h1 class="hero-title">
-            Elektro, voda, topení, zedničina.<br>
             Jeden řemeslník pro celý dům.
           </h1>
           <p class="hero-subtitle">
-            Udělám instalace i dokončovací práce tak, aby vše fungovalo a dobře vypadalo.
+            Navrhnu a udělám rozvody i dokončovací práce tak, aby všechno sedělo – bez přehazování odpovědnosti mezi firmami.
           </p>
           <div class="hero-tags">
             <div class="tag-pill">Novostavby</div>
@@ -706,14 +713,14 @@
           </div>
           <div class="hero-actions">
             <button class="btn-primary" onclick="scrollToId('kontakt')">
-              Nezávazná poptávka
+              Napsat poptávku
             </button>
             <button class="btn-ghost" onclick="scrollToId('sluzby')">
-              Co všechno dělám →
+              Co přesně dělám →
             </button>
           </div>
           <div class="hero-note">
-            Stačí stručně napsat, o jaký byt / dům jde a co potřebujete.
+            Stačí krátce napsat, o jaký byt / dům jde a co potřebujete.
           </div>
         </div>
 
@@ -749,19 +756,18 @@
     <div class="container">
       <div class="section-header">
         <div class="section-eyebrow">Služby</div>
-        <h2 class="section-title">Hlavní profese, které nabízím</h2>
+        <h2 class="section-title">Co pro vás umím zařídit</h2>
         <p class="section-subtitle">
-          Vše nejdůležitější pro technickou část domu i dokončení interiéru.
+          Od prvního kabelu po hotovou místnost. Jasně rozdělené profese, ale jeden člověk na domluvu.
         </p>
       </div>
 
       <div class="services-grid">
         <article class="service-card">
-          <div class="service-corner"></div>
           <div class="service-label">Elektro</div>
           <h3 class="service-title">Elektrikářské práce</h3>
           <p class="service-desc">
-            Nové rozvody, výměny starých instalací, zásuvky, světla, rozvaděče.
+            Nové i předělávky rozvodů, zásuvky, světla, rozvaděče.
           </p>
         </article>
 
@@ -769,7 +775,7 @@
           <div class="service-label">Voda</div>
           <h3 class="service-title">Vodoinstalace &amp; koupelny</h3>
           <p class="service-desc">
-            Rozvody vody a odpadů, příprava koupelen, montáž zařizovacích předmětů.
+            Rozvody vody a odpadů, příprava koupelen a kuchyní.
           </p>
         </article>
 
@@ -777,7 +783,7 @@
           <div class="service-label">Topení</div>
           <h3 class="service-title">Topenářské práce</h3>
           <p class="service-desc">
-            Radiátory, podlahové topení, rozvody topné vody, napojení na zdroj tepla.
+            Radiátory, podlahové topení, napojení na zdroj tepla.
           </p>
         </article>
 
@@ -785,7 +791,7 @@
           <div class="service-label">Tepelná čerpadla</div>
           <h3 class="service-title">Montáž TČ</h3>
           <p class="service-desc">
-            Umístění jednotek, napojení na topení a zprovoznění systému.
+            Umístění, zapojení a zprovoznění tepelného čerpadla.
           </p>
         </article>
 
@@ -793,15 +799,15 @@
           <div class="service-label">Odpady</div>
           <h3 class="service-title">Odpady &amp; kanalizace</h3>
           <p class="service-desc">
-            Vnitřní odpady, svody, napojení na kanalizaci, opravy starších rozvodů.
+            Vnitřní odpady, svody, napojení na kanalizaci.
           </p>
         </article>
 
         <article class="service-card">
           <div class="service-label">Interiér</div>
-          <h3 class="service-title">Sádrokartony &amp; zednické práce</h3>
+          <h3 class="service-title">Sádrokartony &amp; zedničina</h3>
           <p class="service-desc">
-            Příčky, podhledy, zarovnání a úpravy zdí před malováním.
+            Příčky, podhledy, srovnání a opravy zdí.
           </p>
         </article>
 
@@ -809,7 +815,7 @@
           <div class="service-label">Chytrá domácnost</div>
           <h3 class="service-title">Smart prvky</h3>
           <p class="service-desc">
-            Ovládání světel a topení přes mobil, základní automatizace domácnosti.
+            Základní ovládání světel a topení přes mobil.
           </p>
         </article>
 
@@ -817,7 +823,7 @@
           <div class="service-label">Servis</div>
           <h3 class="service-title">Menší opravy</h3>
           <p class="service-desc">
-            Opravy zásuvek, světel, kapajících baterií nebo drobných závad.
+            Opravy zásuvek, světel, kapajících baterií a podobně.
           </p>
         </article>
       </div>
@@ -829,9 +835,9 @@
     <div class="container">
       <div class="section-header">
         <div class="section-eyebrow">Realizace</div>
-        <h2 class="section-title">Ukázky práce podle typu zakázky</h2>
+        <h2 class="section-title">Jak práce ve skutečnosti vypadají</h2>
         <p class="section-subtitle">
-          Vyberte kategorii. Fotky se pomalu pohybují tam a zpět, abyste viděli detaily práce.
+          Vyberte oblast, která vás zajímá. Fotky se pomalu pohybují tam a zpět, abyste stihli kouknout na detaily.
         </p>
       </div>
 
@@ -841,9 +847,9 @@
         </div>
 
         <div class="gallery-caption-top">
-          <div id="gallery-job">Elektro – rozvaděče a rozvody</div>
+          <div id="gallery-job">Elektro</div>
           <p id="gallery-text">
-            Čisté zapojení rozvaděče a jističů.
+            Čisté zapojení rozvaděčů a rozvodů.
           </p>
         </div>
 
@@ -854,8 +860,7 @@
             </div>
           </div>
           <div class="gallery-caption-side">
-            V každé kategorii jsou reálné fotky z vašich zakázek – elektroinstalace, topení,
-            koupelny, sádrokarton i zednické práce.
+            V galerii jsou jen reálné fotky ze zakázek – žádné ilustrační obrázky.
           </div>
         </div>
 
@@ -871,33 +876,33 @@
     <div class="container">
       <div class="section-header">
         <div class="section-eyebrow">O mně</div>
-        <h2 class="section-title">Jeden kontakt, více profesí</h2>
+        <h2 class="section-title">Řemesla, která na sebe navazují</h2>
         <p class="section-subtitle">
-          Nehoním po stavbě pět různých firem – většinu důležitých prací řeším sám.
+          Místo pěti firem řešíte vše s jedním člověkem, který zná celou stavbu.
         </p>
       </div>
 
       <div class="about-grid">
         <div class="about-card">
           <p>
-            Dělám profese, které se na stavbě nejčastěji potkávají: elektro, voda, topení,
-            odpady, sádrokarton i základní zednické práce. Díky tomu se práce lépe navazují
-            a nevznikají zbytečné mezery.
+            Dělám profese, které se na stavbě potkávají nejčastěji – elektro, voda, topení,
+            odpady, sádrokarton a základní zednické práce. Díky tomu se nemusí čekat,
+            až si to mezi sebou vyřeší různí dodavatelé.
           </p>
           <ul class="about-list">
-            <li>domluva přímo s jedním řemeslníkem</li>
-            <li>reálné termíny a průběžná komunikace</li>
-            <li>práce dělaná tak, aby u ní šlo v klidu navázat dalšími profesemi</li>
+            <li>jednoduchá domluva a jasný kontakt</li>
+            <li>rozumné termíny místo přehnaných slibů</li>
+            <li>práce připravená tak, aby na ni šlo dobře navázat</li>
           </ul>
         </div>
         <div>
-          <p><strong>Typické zakázky:</strong></p>
+          <p><strong>Nejčastěji řeším:</strong></p>
           <ul class="about-list">
-            <li>kompletní rozvody v bytě / domě</li>
-            <li>rekonstrukce jádra, koupelen, kuchyní</li>
-            <li>příprava pro kuchyňskou linku a spotřebiče</li>
+            <li>kompletní rozvody v bytě nebo domě</li>
+            <li>rekonstrukce jader, koupelen a kuchyní</li>
+            <li>přípravu pro kuchyň a spotřebiče</li>
             <li>montáž tepelného čerpadla a úpravy topení</li>
-            <li>menší opravy, které nechcete řešit sami</li>
+            <li>menší opravy, které nechcete dělat sami</li>
           </ul>
         </div>
       </div>
@@ -914,25 +919,12 @@
               <div class="section-eyebrow" style="color:#9ca3af;">Kontakt</div>
               <h2 class="section-title" style="color:#f9fafb; margin-bottom:0;">Napište mi</h2>
             </div>
-            <small>nebo použijte formulář</small>
+            <small>nejrychlejší je WhatsApp</small>
           </div>
 
           <a class="whatsapp-btn" href="https://wa.me/420000000000" target="_blank" rel="noopener">
             <span>💬</span> WhatsApp
           </a>
-
-          <div class="contact-row">
-            <strong>Telefon:</strong>
-            <a href="tel:+420000000000">+420&nbsp;000&nbsp;000&nbsp;000</a>
-          </div>
-          <div class="contact-row">
-            <strong>E-mail:</strong>
-            <a href="mailto:info@firma.cz">info@firma.cz</a>
-          </div>
-          <div class="contact-row">
-            <strong>Lokalita:</strong>
-            <span>např. Brno a okolí</span>
-          </div>
 
           <form onsubmit="event.preventDefault(); alert('Zde doplňte vlastní zpracování formuláře (e-mail, systém atd.).');">
             <div>
@@ -940,12 +932,8 @@
               <input type="text" id="name" name="name" placeholder="Jak vám mám říkat?" required>
             </div>
             <div>
-              <label for="contact">E-mail</label>
-              <input type="email" id="contact" name="contact" placeholder="jan@example.com" required>
-            </div>
-            <div>
               <label for="message">Vaše zpráva</label>
-              <textarea id="message" name="message" placeholder="Krátce popište, co potřebujete – např. rekonstrukce koupelny, nové rozvody v bytě…" required></textarea>
+              <textarea id="message" name="message" placeholder="Co potřebujete udělat, kde a v jakém rozsahu?" required></textarea>
             </div>
             <button class="btn-primary" type="submit">
               Odeslat
@@ -958,8 +946,8 @@
 
         <div>
           <p class="contact-side-note">
-            Pro přesnější návrh pomůže půdorys nebo fotky stávajícího stavu. U větších
-            zakázek je vždy potřeba osobní prohlídka na místě.
+            Půdorys nebo fotky stávajícího stavu pomůžou odhadnout práci i cenu
+            ještě před osobní prohlídkou.
           </p>
         </div>
       </div>
@@ -1013,50 +1001,50 @@
       }
     }
 
-    /* DATA PRO KATEGORIE A SLIDER */
+    /* DATA PRO KATEGORIE A SLIDER – zjednodušené popisky */
     const categories = {
       elektro: {
         label: 'Elektro',
         slides: [
-          { src: 'ele.png',  alt: 'Elektroinstalace – rozvaděč 1', title: 'Elektro – rozvaděče a rozvody', text: 'Čisté zapojení rozvaděče a jističů.' },
-          { src: 'ele2.png', alt: 'Elektroinstalace – rozvaděč 2', title: 'Elektro – rozvaděče a rozvody', text: 'Další příklad rozvaděče s řádným uspořádáním vodičů.' },
-          { src: 'ele3.png', alt: 'Elektroinstalace – rozvod ve zdi', title: 'Elektro – příprava rozvodů', text: 'Příprava elektro rozvodů ve zdi před zapravením.' }
+          { src: 'ele.png',  alt: 'Elektroinstalace – rozvaděč 1', title: 'Elektro', text: 'Rozvaděče a přehledné jištění.' },
+          { src: 'ele2.png', alt: 'Elektroinstalace – rozvaděč 2', title: 'Elektro', text: 'Uspořádané vedení a kabeláž.' },
+          { src: 'ele3.png', alt: 'Elektroinstalace – rozvod ve zdi', title: 'Elektro', text: 'Příprava rozvodů před zapravením.' }
         ]
       },
       topeni: {
         label: 'Topení',
         slides: [
-          { src: 'topeni.png',  alt: 'Rozvody topení v místnosti', title: 'Topení – rozvody', text: 'Rozvody topení v technické místnosti.' },
-          { src: 'topeni2.png', alt: 'Technická místnost s bojlerem a rozvody', title: 'Topení – technická místnost', text: 'Technická místnost s bojlerem a napojením rozvodů.' },
-          { src: 'topeni3.png', alt: 'Topenářské rozvody a armatury', title: 'Topení – vedení a armatury', text: 'Detail topenářských rozvodů a armatur.' }
+          { src: 'topeni.png',  alt: 'Rozvody topení v místnosti', title: 'Topení', text: 'Rozvody topení v technické místnosti.' },
+          { src: 'topeni2.png', alt: 'Technická místnost s bojlerem a rozvody', title: 'Topení', text: 'Napojení na zdroj tepla.' },
+          { src: 'topeni3.png', alt: 'Topenářské rozvody a armatury', title: 'Topení', text: 'Detail vedení a armatur.' }
         ]
       },
       koupelna: {
         label: 'Koupelna',
         slides: [
-          { src: 'koupelna.png', alt: 'Instalace v koupelně', title: 'Koupelna – příprava instalací', text: 'Příprava rozvodů a vývodů pro koupelnu.' }
+          { src: 'koupelna.png', alt: 'Instalace v koupelně', title: 'Koupelna', text: 'Příprava rozvodů a vývodů pro koupelnu.' }
         ]
       },
       sadro: {
         label: 'Sádrokarton',
         slides: [
-          { src: 'sadro.jpg',  alt: 'Sádrokarton – hotová místnost se střešním oknem', title: 'Sádrokarton – hotový pokoj', text: 'Podkrovní místnost se sádrokartonem a střešním oknem.' },
-          { src: 'sadro2.jpg', alt: 'Sádrokarton – konstrukce a rozvody', title: 'Sádrokarton – montáž konstrukce', text: 'Montáž sádrokartonové konstrukce a vedení rozvodů.' },
-          { src: 'sadro4.jpg', alt: 'Sádrokarton – hotové šikminy', title: 'Sádrokarton – šikminy a podhledy', text: 'Dokončené šikminy a podhledy před malbou.' }
+          { src: 'sadro.jpg',  alt: 'Sádrokarton – hotová místnost se střešním oknem', title: 'Sádrokarton', text: 'Hotový pokoj v podkroví.' },
+          { src: 'sadro2.jpg', alt: 'Sádrokarton – konstrukce a rozvody', title: 'Sádrokarton', text: 'Konstrukce a vedení instalací.' },
+          { src: 'sadro4.jpg', alt: 'Sádrokarton – hotové šikminy', title: 'Sádrokarton', text: 'Dokončené šikminy a podhledy.' }
         ]
       },
       zednik: {
         label: 'Zednické práce',
         slides: [
-          { src: 'zednik.jpg',  alt: 'Fasáda domu', title: 'Zednické práce – fasáda', text: 'Zateplená a upravená fasáda rodinného domu.' },
-          { src: 'zednik2.jpg', alt: 'Interiérová stěna s obkladem', title: 'Zednické práce – interiér', text: 'Obložená stěna a připravený interiér.' },
-          { src: 'zednik3.jpg', alt: 'Schodiště a omítky', title: 'Zednické práce – omítky', text: 'Schodiště a omítky před dokončením interiéru.' }
+          { src: 'zednik.jpg',  alt: 'Fasáda domu', title: 'Zednické práce', text: 'Upravená fasáda rodinného domu.' },
+          { src: 'zednik2.jpg', alt: 'Interiérová stěna s obkladem', title: 'Zednické práce', text: 'Obklady a interiérové úpravy.' },
+          { src: 'zednik3.jpg', alt: 'Schodiště a omítky', title: 'Zednické práce', text: 'Schodiště a nové omítky.' }
         ]
       },
       reko: {
         label: 'Rekonstrukce',
         slides: [
-          { src: 'reko.png', alt: 'Rekonstruovaný interiér', title: 'Rekonstrukce – hotový prostor', text: 'Příklad větší rekonstrukce s kombinací více profesí.' }
+          { src: 'reko.png', alt: 'Rekonstruovaný interiér', title: 'Rekonstrukce', text: 'Hotový prostor po rekonstrukci.' }
         ]
       }
     };
@@ -1081,7 +1069,7 @@
     let animStarted = false;
 
     function buildTabs() {
-      Object.entries(categories).forEach(([key, cat], idx) => {
+      Object.entries(categories).forEach(([key, cat]) => {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'gallery-tab' + (key === currentCategoryKey ? ' active' : '');
