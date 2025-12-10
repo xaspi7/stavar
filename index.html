@@ -1,37 +1,61 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <title>Řemeslné práce – elektro, voda, topení, zednické práce</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Kompletní řemeslné práce – elektro, voda, topení, odpady, sádrokartony, zednické práce, chytré domácnosti a tepelná čerpadla.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Stavební práce – sádrokarton, zednické práce, úpravy bytů</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Stavební a zednické práce – přestavby bytů a domů, sádrokarton, omítky, koupelny a fasády."
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
   <style>
     :root {
-      --bg-dark: #0f172a;
-      --bg-light: #f5f5f7;
+      --bg-main: #020617;
+      --bg-elevated: #0b1120;
+      --bg-card: #111827;
+      --bg-card-soft: #1f2937;
+      --border-subtle: #1f2937;
+      --border-strong: #4b5563;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
       --accent: #f97316;
-      --text-main: #111827;
-      --text-muted: #6b7280;
-      --card-border: #e5e7eb;
+      --accent-soft: rgba(249, 115, 22, 0.25);
       --radius-lg: 18px;
-      --radius-sm: 10px;
-      --shadow-soft: 0 20px 40px rgba(15, 23, 42, 0.14);
+      --radius-md: 14px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.9);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 100%);
       color: var(--text-main);
-      background: #ffffff;
       line-height: 1.7;
     }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     .container {
       max-width: 1160px;
       margin: 0 auto;
@@ -43,49 +67,71 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(15, 23, 42, 0.94);
-      backdrop-filter: blur(12px);
-      color: #e5e7eb;
-      box-shadow: 0 1px 0 rgba(148,163,184,0.25);
+      background: rgba(2, 6, 23, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.28);
     }
+
     .navbar-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 12px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 20px;
-      max-width: 1160px;
-      margin: 0 auto;
+      gap: 16px;
     }
+
     .brand {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
       font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
+
     .brand-mark {
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #facc15 0, #f97316 40%, #b91c1c 100%);
-      display: inline-flex;
+      background: conic-gradient(
+        from 220deg,
+        #f97316,
+        #fb923c,
+        #facc15,
+        #f97316
+      );
+      display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
-      font-size: 0.7rem;
-      font-weight: 700;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      color: #020617;
+      font-size: 0.8rem;
+      font-weight: 800;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9);
     }
-    .nav-links { display: flex; gap: 24px; font-size: 0.9rem; }
+
+    .brand-sub {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 0.9rem;
+    }
+
     .nav-links a {
       position: relative;
+      opacity: 0.8;
       padding-bottom: 4px;
-      cursor: pointer;
-      color: #e5e7eb;
-      opacity: 0.85;
     }
+
     .nav-links a::after {
       content: "";
       position: absolute;
@@ -95,105 +141,115 @@
       height: 2px;
       background: var(--accent);
       border-radius: 999px;
-      transition: width 0.2s ease-out;
+      transition: width 0.16s ease-out;
     }
-    .nav-links a:hover { opacity: 1; }
-    .nav-links a:hover::after { width: 100%; }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
     .nav-phone {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       display: flex;
       align-items: center;
       gap: 8px;
-      background: rgba(15,23,42,0.7);
       padding: 8px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(248,250,252,0.18);
+      background: #020617;
+      border: 1px solid #374151;
+      color: #f9fafb;
     }
-    .nav-phone span { font-weight: 600; color: #f9fafb; }
+
     .nav-burger {
       display: none;
+      flex-direction: column;
+      gap: 4px;
       width: 26px;
       height: 26px;
-      flex-direction: column;
-      justify-content: center;
-      gap: 4px;
       cursor: pointer;
     }
+
     .nav-burger span {
       display: block;
       height: 2px;
       width: 100%;
-      background: #e5e7eb;
       border-radius: 999px;
+      background: #e5e7eb;
     }
 
     /* HERO */
     .hero {
-      background: radial-gradient(circle at top left, #1f2937 0, #020617 38%), #020617;
-      color: #e5e7eb;
-      padding: 70px 0 80px;
-      position: relative;
-      overflow: hidden;
+      padding: 80px 0 90px;
+      background: radial-gradient(
+          circle at top left,
+          rgba(248, 250, 252, 0.06),
+          transparent 55%
+        ),
+        var(--bg-main);
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      right: -150px;
-      top: -80px;
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle, rgba(248,250,252,0.08) 0, transparent 60%);
-      pointer-events: none;
-    }
+
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 48px;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.9fr);
+      gap: 40px;
       align-items: center;
     }
+
     .eyebrow {
       text-transform: uppercase;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       font-size: 0.75rem;
-      color: #9ca3af;
-      margin-bottom: 14px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
     }
+
     .hero-title {
-      font-size: clamp(2.1rem, 3vw, 2.8rem);
+      font-size: clamp(2.2rem, 3.2vw, 2.9rem);
       line-height: 1.2;
-      margin: 0 0 16px;
+      margin: 0 0 14px;
       font-weight: 600;
     }
-    .hero-title span { color: var(--accent); }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
     .hero-subtitle {
-      font-size: 0.98rem;
       max-width: 520px;
-      color: #d1d5db;
+      font-size: 0.98rem;
+      color: var(--text-muted);
       margin-bottom: 20px;
     }
+
     .hero-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }
+
     .tag-pill {
-      font-size: 0.73rem;
-      text-transform: uppercase;
+      font-size: 0.72rem;
       letter-spacing: 0.16em;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid #374151;
+      text-transform: uppercase;
       color: #e5e7eb;
-      background: rgba(15,23,42,0.7);
     }
+
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      align-items: center;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
+
     .btn-primary {
       border-radius: 999px;
       background: var(--accent);
@@ -202,19 +258,22 @@
       font-size: 0.9rem;
       font-weight: 600;
       border: none;
-      box-shadow: 0 16px 30px rgba(248,113,22,0.35);
       cursor: pointer;
-      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, background 0.15s ease-out;
+      box-shadow: 0 18px 40px rgba(249, 115, 22, 0.55);
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+        background 0.15s ease-out;
     }
+
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 20px 38px rgba(248,113,22,0.45);
-      background: #f97316;
+      box-shadow: 0 22px 52px rgba(249, 115, 22, 0.7);
+      background: #fb923c;
     }
+
     .btn-ghost {
       border-radius: 999px;
       padding: 9px 20px;
-      border: 1px solid rgba(148,163,184,0.6);
+      border: 1px solid #4b5563;
       background: transparent;
       color: #e5e7eb;
       font-size: 0.9rem;
@@ -223,190 +282,227 @@
       align-items: center;
       gap: 6px;
     }
+
     .hero-note {
       font-size: 0.8rem;
-      color: #9ca3af;
+      color: var(--text-muted);
     }
+
     .hero-media {
-      background: rgba(15,23,42,0.9);
+      background: var(--bg-card);
       border-radius: var(--radius-lg);
-      border: 1px solid rgba(148,163,184,0.35);
       padding: 18px;
+      border: 1px solid #1f2937;
       box-shadow: var(--shadow-soft);
     }
+
     .hero-photo {
       border-radius: 14px;
       overflow: hidden;
-      position: relative;
       background: #020617;
       height: 260px;
-      display: flex;
-      align-items: stretch;
-      justify-content: stretch;
+      position: relative;
     }
+
     .hero-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: saturate(1.1);
     }
+
     .hero-badge {
       position: absolute;
       left: 16px;
       bottom: 16px;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(15,23,42,0.9);
-      color: #e5e7eb;
-      font-size: 0.75rem;
+      background: rgba(15, 23, 42, 0.92);
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      border: 1px solid rgba(148,163,184,0.6);
-      backdrop-filter: blur(10px);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.75rem;
+      backdrop-filter: blur(12px);
     }
+
     .hero-badge-dot {
       width: 10px;
       height: 10px;
       border-radius: 999px;
       background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34,197,94,0.3);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.35);
     }
+
     .hero-stats {
+      margin-top: 16px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 16px;
+      gap: 12px;
       font-size: 0.8rem;
-      color: #d1d5db;
+      color: var(--text-muted);
     }
+
     .hero-stat {
-      padding: 10px 10px;
       border-radius: 12px;
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(148,163,184,0.4);
+      padding: 10px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid #1f2937;
     }
+
     .hero-stat strong {
       display: block;
+      color: #f9fafb;
+      margin-bottom: 3px;
       font-size: 0.9rem;
-      margin-bottom: 4px;
     }
 
     /* SECTIONS */
-    section { padding: 70px 0; }
+    section {
+      padding: 80px 0;
+    }
+
     .section-header {
       max-width: 720px;
-      margin-bottom: 32px;
+      margin-bottom: 34px;
     }
+
     .section-eyebrow {
       text-transform: uppercase;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       font-size: 0.75rem;
       color: var(--text-muted);
       margin-bottom: 8px;
     }
+
     .section-title {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       margin: 0 0 4px;
     }
+
     .section-subtitle {
-      font-size: 0.96rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       margin: 0;
     }
 
-    /* SERVICES */
-    #sluzby { background: var(--bg-light); }
+    /* SLUZBY – tmavý, výrazné boxy */
+    #sluzby {
+      background: radial-gradient(circle at top, #020617 0, #020617 35%, #020617 100%);
+    }
+
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
+      gap: 22px;
     }
+
     .service-card {
-      background: #ffffff;
-      border-radius: var(--radius-sm);
-      padding: 18px 18px 20px;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 10px 24px rgba(15,23,42,0.04);
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 18px 18px 22px;
+      border: 1px solid #1f2937;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.85);
       position: relative;
       overflow: hidden;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+        border-color 0.12s ease-out, background 0.12s ease-out;
     }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #f97316, #fb923c, #facc15);
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      border-color: #4b5563;
+      background: var(--bg-card-soft);
+      box-shadow: 0 22px 52px rgba(0, 0, 0, 0.95);
+    }
+
     .service-label {
-      font-size: 0.72rem;
+      margin-top: 8px;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--text-muted);
     }
+
     .service-title {
-      margin: 0;
-      font-size: 1.02rem;
-    }
-    .service-desc {
-      margin: 2px 0 0;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-    .service-corner {
-      position: absolute;
-      right: -40px;
-      top: -40px;
-      width: 90px;
-      height: 90px;
-      background: radial-gradient(circle at center, rgba(249,115,22,0.25) 0, transparent 70%);
-      opacity: 0.4;
+      margin: 4px 0 4px;
+      font-size: 1.05rem;
     }
 
-    /* REALIZACE – slider s kategoriemi */
+    .service-desc {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #d1d5db;
+    }
+
+    /* REALIZACE – slider + full gallery */
+    #realizace {
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 100%);
+    }
+
     .gallery-shell {
       border-radius: var(--radius-lg);
-      border: 1px solid var(--card-border);
-      background: #ffffff;
-      box-shadow: 0 16px 32px rgba(15,23,42,0.06);
-      padding: 18px 18px 20px;
+      padding: 20px 20px 22px;
+      background: var(--bg-card);
+      border: 1px solid #1f2937;
+      box-shadow: var(--shadow-soft);
     }
+
     .gallery-tabs {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 14px;
     }
+
     .gallery-tab {
       border-radius: 999px;
       padding: 6px 14px;
       font-size: 0.86rem;
-      border: 1px solid #e5e7eb;
-      background: #f9fafb;
-      color: #374151;
+      border: 1px solid #374151;
+      background: #020617;
+      color: #e5e7eb;
       cursor: pointer;
+      opacity: 0.85;
     }
+
     .gallery-tab.active {
-      background: #0f172a;
-      color: #f9fafb;
-      border-color: #0f172a;
+      background: var(--accent);
+      color: #111827;
+      border-color: var(--accent);
+      opacity: 1;
     }
+
     .gallery-caption-top {
       text-align: center;
       margin-bottom: 10px;
     }
+
     #gallery-job {
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 4px;
       display: inline-block;
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 999px;
-      background: #f9fafb;
-      transition: box-shadow 0.3s ease, color 0.3s ease;
+      background: #020617;
+      border: 1px solid #374151;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
     }
+
     #gallery-job.glow {
-      box-shadow: 0 0 0 3px rgba(249,115,22,0.4);
-      color: #111827;
+      box-shadow: 0 0 0 3px var(--accent-soft);
+      border-color: var(--accent);
     }
+
     #gallery-text {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
       margin: 0;
     }
@@ -419,30 +515,35 @@
       align-items: stretch;
     }
 
-    /* >>> UPRAVENÁ ČÁST – méně ořezávání fotek <<< */
     .gallery-image-wrapper {
       border-radius: 16px;
-      overflow: hidden;
       background: #020617;
-      position: relative;
-      height: 360px;          /* trochu vyšší prostor pro fotku */
+      border: 1px solid #1f2937;
       padding: 8px 0;
-      box-shadow: 0 0 0 0 rgba(249,115,22,0);
-      transition: box-shadow 0.3s ease;
+      overflow: hidden;
+      position: relative;
+      height: 320px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
     }
+
     .gallery-image-wrapper.glow {
-      box-shadow: 0 0 0 3px rgba(249,115,22,0.4);
+      box-shadow: 0 0 0 3px var(--accent-soft),
+        0 22px 50px rgba(0, 0, 0, 0.95);
+      border-color: var(--accent);
     }
+
     .gallery-track {
       height: 100%;
       display: flex;
       gap: 8px;
       will-change: transform;
-      align-items: center;
     }
+
     .gallery-slide {
       flex: 0 0 260px;
       max-width: 260px;
@@ -451,185 +552,313 @@
       align-items: center;
       justify-content: center;
     }
+
     .gallery-slide img {
       width: 100%;
       height: 100%;
-      object-fit: contain;    /* hlavní změna – fotka se celá vejde, téměř žádné ořezávání */
-      background: #020617;    /* tmavé pozadí kolem, když nesedí poměr stran */
+      object-fit: cover;
       border-radius: 12px;
     }
-    /* >>> konec úpravy galerie <<< */
 
     .gallery-caption-side {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
     }
 
-    .gallery-dots {
-      margin-top: 10px;
+    .gallery-footer {
+      margin-top: 12px;
       display: flex;
-      justify-content: center;
-      gap: 6px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
     }
+
+    .gallery-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
     .gallery-dot {
       width: 8px;
       height: 8px;
       border-radius: 999px;
-      background: #e5e7eb;
+      background: #1f2937;
+      box-shadow: 0 0 0 1px #374151;
       opacity: 0.4;
-      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+      transition: 0.18s;
     }
+
     .gallery-dot.active {
       width: 12px;
       height: 12px;
       opacity: 1;
       background: var(--accent);
-      box-shadow: 0 0 0 3px rgba(249,115,22,0.3);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .gallery-full-btn {
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 0.84rem;
+      border: 1px solid #4b5563;
+      background: #020617;
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .gallery-full-btn span {
+      font-size: 1.1rem;
+      line-height: 0;
+    }
+
+    /* MODAL – plná galerie */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 80;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 1000px;
+      width: 92%;
+      max-height: 86vh;
+      background: #020617;
+      border-radius: 20px;
+      border: 1px solid #4b5563;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.95);
+      padding: 18px 18px 20px;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .modal-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .modal-header small {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .modal-close {
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      background: #020617;
+      color: #e5e7eb;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .modal-grid {
+      margin-top: 4px;
+      padding-right: 4px;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+    }
+
+    .modal-thumb {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #1f2937;
+      background: black;
+    }
+
+    .modal-thumb img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
     }
 
     /* ABOUT */
     .about-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 32px;
-      align-items: flex-start;
-    }
-    .about-card {
-      border-radius: var(--radius-lg);
-      padding: 18px 20px 22px;
-      border: 1px solid var(--card-border);
-      background: #ffffff;
-      box-shadow: 0 16px 32px rgba(15,23,42,0.06);
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-    .about-list {
-      margin: 10px 0 0;
-      padding-left: 18px;
-      font-size: 0.92rem;
-    }
-    .about-list li { margin-bottom: 5px; }
-
-    /* CONTACT */
-    #kontakt {
-      background: #0b1120;
-      color: #e5e7eb;
-      position: relative;
-      overflow: hidden;
-    }
-    #kontakt::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(248,113,22,0.16), transparent 60%);
-      opacity: 0.9;
-      pointer-events: none;
-    }
-    .contact-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       gap: 28px;
       align-items: flex-start;
     }
+
+    .about-card {
+      border-radius: var(--radius-lg);
+      padding: 18px 20px 22px;
+      background: var(--bg-card);
+      border: 1px solid #1f2937;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.94rem;
+      color: var(--text-muted);
+    }
+
+    .about-list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      font-size: 0.9rem;
+    }
+
+    .about-list li {
+      margin-bottom: 5px;
+    }
+
+    /* KONTAKT */
+    #kontakt {
+      background: radial-gradient(circle at top, #020617 0, #020617 45%, #020617 100%);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: flex-start;
+    }
+
     .contact-card {
       border-radius: var(--radius-lg);
-      background: rgba(15,23,42,0.95);
-      border: 1px solid rgba(148,163,184,0.55);
       padding: 20px 22px 22px;
+      background: #020617;
+      border: 1px solid #4b5563;
       box-shadow: var(--shadow-soft);
     }
+
     .contact-header-row {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
     }
+
     .contact-header-row small {
       font-size: 0.8rem;
       color: #a5b4fc;
     }
+
     .whatsapp-btn {
       display: block;
       width: 100%;
-      max-width: 420px;
-      margin: 0 auto 16px auto;
-      padding: 12px 18px;
+      padding: 11px 18px;
+      margin-bottom: 14px;
       border-radius: 999px;
       border: none;
       cursor: pointer;
       background: #22c55e;
       color: #052e16;
       font-weight: 600;
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       text-align: center;
-      box-shadow: 0 18px 40px rgba(34,197,94,0.4);
-      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, background 0.15s ease-out;
-    }
-    .whatsapp-btn span {
-      margin-right: 6px;
-    }
-    .whatsapp-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 22px 50px rgba(34,197,94,0.55);
-      background: #16a34a;
+      box-shadow: 0 18px 40px rgba(34, 197, 94, 0.55);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
-    .contact-row {
-      margin-bottom: 8px;
-      font-size: 0.95rem;
+    .whatsapp-btn span {
+      font-size: 1.1rem;
     }
-    .contact-row strong {
-      display: inline-block;
-      width: 80px;
-      color: #e5e7eb;
+
+    .whatsapp-btn:hover {
+      background: #16a34a;
+      transform: translateY(-1px);
+      box-shadow: 0 22px 50px rgba(34, 197, 94, 0.7);
     }
-    .contact-row a { color: #f9fafb; }
+
     form {
-      margin-top: 10px;
+      margin-top: 6px;
       display: grid;
       gap: 10px;
       font-size: 0.9rem;
     }
-    label { display: block; margin-bottom: 3px; }
-    input, textarea {
+
+    label {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    input,
+    textarea {
       width: 100%;
       padding: 9px 10px;
       border-radius: 10px;
-      border: 1px solid rgba(148,163,184,0.7);
-      background: rgba(15,23,42,0.7);
+      border: 1px solid #4b5563;
+      background: #020617;
       color: #e5e7eb;
       font-family: inherit;
       font-size: 0.9rem;
     }
+
     input::placeholder,
-    textarea::placeholder { color: #9ca3af; }
-    textarea { resize: vertical; min-height: 110px; }
+    textarea::placeholder {
+      color: #6b7280;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
     .contact-note {
       font-size: 0.8rem;
-      color: #9ca3af;
-      margin-top: 6px;
+      color: var(--text-muted);
     }
+
     .contact-side-note {
       font-size: 0.9rem;
-      color: #cbd5f5;
-      max-width: 260px;
+      color: var(--text-muted);
+      max-width: 280px;
     }
 
     /* FOOTER */
     footer {
       background: #020617;
+      border-top: 1px solid #1f2937;
       color: #6b7280;
       font-size: 0.8rem;
       padding: 14px 0 18px;
     }
+
     .footer-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
@@ -641,21 +870,45 @@
       .gallery-viewer {
         grid-template-columns: minmax(0, 1fr);
       }
-      .hero { padding-top: 46px; }
-      .hero-media { order: -1; }
+
+      .hero-media {
+        order: -1;
+      }
+
+      .hero {
+        padding-top: 60px;
+      }
     }
+
     @media (max-width: 840px) {
-      .nav-links { display: none; }
-      .nav-burger { display: flex; }
+      .nav-links {
+        display: none;
+      }
+
+      .nav-burger {
+        display: flex;
+      }
     }
-    @media (max-width: 820px) {
-      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    @media (max-width: 720px) {
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
-    @media (max-width: 640px) {
-      section { padding: 56px 0; }
-      .services-grid { grid-template-columns: minmax(0, 1fr); }
-      .section-header { margin-bottom: 24px; }
-      .gallery-image-wrapper { height: 320px; } /* na mobilu o něco nižší */
+
+    @media (max-width: 620px) {
+      section {
+        padding: 60px 0;
+      }
+
+      .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gallery-image-wrapper {
+        height: 260px;
+      }
+
       .gallery-slide {
         flex: 0 0 210px;
         max-width: 210px;
@@ -664,17 +917,17 @@
   </style>
 </head>
 <body>
-
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="navbar-inner">
       <div class="brand">
-        <div class="brand-mark">R</div>
+        <div class="brand-mark">S</div>
         <div>
-          <div>Řemeslné práce</div>
-          <div style="font-size:0.72rem; font-weight:400; opacity:0.8;">Elektro • voda • topení • zedničina</div>
+          <div>Stavební práce</div>
+          <div class="brand-sub">sádrokarton • zdi • povrchy</div>
         </div>
       </div>
+
       <nav class="nav-links">
         <a href="#uvod">Úvod</a>
         <a href="#sluzby">Služby</a>
@@ -682,9 +935,11 @@
         <a href="#omne">O mně</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
+
       <a href="tel:+420000000000" class="nav-phone">
         <span>+420&nbsp;000&nbsp;000&nbsp;000</span>
       </a>
+
       <div class="nav-burger" onclick="toggleNav()">
         <span></span><span></span><span></span>
       </div>
@@ -696,35 +951,30 @@
     <div class="container">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow">Kompletní řemesla</div>
+          <div class="eyebrow">Stavební úpravy • sádrokarton • zednické práce</div>
           <h1 class="hero-title">
-            Elektro, voda, topení, zedničina.<br>
-            Jeden řemeslník pro celý dům.
+            Stavební práce, které drží pohromadě
+            <span>celý byt i dům.</span>
           </h1>
-          <p class="hero-subtitle">
-            Udělám instalace i dokončovací práce tak, aby vše fungovalo a dobře vypadalo.
-          </p>
+        
           <div class="hero-tags">
-            <div class="tag-pill">Novostavby</div>
-            <div class="tag-pill">Rekonstrukce</div>
-            <div class="tag-pill">Menší opravy</div>
+            <div class="tag-pill">Bytové přestavby</div>
+            <div class="tag-pill">Rodinné domy</div>
+            <div class="tag-pill">Podkroví &amp; sádrokarton</div>
           </div>
           <div class="hero-actions">
             <button class="btn-primary" onclick="scrollToId('kontakt')">
-              Nezávazná poptávka
+              Napsat poptávku
             </button>
             <button class="btn-ghost" onclick="scrollToId('sluzby')">
-              Co všechno dělám →
+              Co přesně dělám →
             </button>
-          </div>
-          <div class="hero-note">
-            Stačí stručně napsat, o jaký byt / dům jde a co potřebujete.
           </div>
         </div>
 
         <aside class="hero-media">
           <div class="hero-photo">
-            <img src="reko.png" alt="Ukázka řemeslných prací">
+            <img src="reko.png" alt="Ukázka stavebních prací" />
             <div class="hero-badge">
               <span class="hero-badge-dot"></span>
               Osobně na každé zakázce
@@ -732,16 +982,16 @@
           </div>
           <div class="hero-stats">
             <div class="hero-stat">
-              <strong>Elektro</strong>
-              rozvody, zásuvky, světla
+              <strong>Byty a domy</strong>
+              jádra, podkroví
             </div>
             <div class="hero-stat">
-              <strong>Voda &amp; topení</strong>
-              koupelny, radiátory, TČ
+              <strong>Sádrokarton</strong>
+              podhledy, příčky, šikminy
             </div>
             <div class="hero-stat">
-              <strong>Interiér</strong>
-              sádrokarton, úpravy zdí
+              <strong>Zednické práce</strong>
+              příčky, omítky, opravy
             </div>
           </div>
         </aside>
@@ -754,155 +1004,158 @@
     <div class="container">
       <div class="section-header">
         <div class="section-eyebrow">Služby</div>
-        <h2 class="section-title">Hlavní profese, které nabízím</h2>
+        <h2 class="section-title">Na co se ve stavebních pracích zaměřuji</h2>
         <p class="section-subtitle">
-          Vše nejdůležitější pro technickou část domu i dokončení interiéru.
+          Všechno, co souvisí s úpravou zdí a prostor – od hrubších zásahů po
+          přípravu pro obklady, malby a další profese.
         </p>
       </div>
 
       <div class="services-grid">
         <article class="service-card">
-          <div class="service-corner"></div>
-          <div class="service-label">Elektro</div>
-          <h3 class="service-title">Elektrikářské práce</h3>
+          <div class="service-label">Přestavby</div>
+          <h3 class="service-title">Byty a rodinné domy</h3>
           <p class="service-desc">
-            Nové rozvody, výměny starých instalací, zásuvky, světla, rozvaděče.
+            Přestavby místností, změny dispozic, úpravy podkroví a půdních prostor.
           </p>
         </article>
 
         <article class="service-card">
-          <div class="service-label">Voda</div>
-          <h3 class="service-title">Vodoinstalace &amp; koupelny</h3>
+          <div class="service-label">Zdivo</div>
+          <h3 class="service-title">Zdění a příčky</h3>
           <p class="service-desc">
-            Rozvody vody a odpadů, příprava koupelen, montáž zařizovacích předmětů.
+            Nové příčky, zazdění otvorů, probourání a příprava pro dveře a okna.
           </p>
         </article>
 
         <article class="service-card">
-          <div class="service-label">Topení</div>
-          <h3 class="service-title">Topenářské práce</h3>
+          <div class="service-label">Povrchy</div>
+          <h3 class="service-title">Omítky a vyrovnání zdí</h3>
           <p class="service-desc">
-            Radiátory, podlahové topení, rozvody topné vody, napojení na zdroj tepla.
+            Úpravy zdí, srovnání křivých povrchů, opravy po instalatérech a elektrikářích.
           </p>
         </article>
 
         <article class="service-card">
-          <div class="service-label">Tepelná čerpadla</div>
-          <h3 class="service-title">Montáž TČ</h3>
+          <div class="service-label">Sádrokarton</div>
+          <h3 class="service-title">Podhledy a šikminy</h3>
           <p class="service-desc">
-            Umístění jednotek, napojení na topení a zprovoznění systému.
+            Sádrokartonové příčky, podhledy, zakrytí instalací a podkrovní místnosti.
           </p>
         </article>
 
         <article class="service-card">
-          <div class="service-label">Odpady</div>
-          <h3 class="service-title">Odpady &amp; kanalizace</h3>
+          <div class="service-label">Koupelny</div>
+          <h3 class="service-title">Koupelny a jádra</h3>
           <p class="service-desc">
-            Vnitřní odpady, svody, napojení na kanalizaci, opravy starších rozvodů.
+            Vyzdění, příprava stěn, vyrovnání a příprava pro obklady a sanitu.
           </p>
         </article>
 
         <article class="service-card">
-          <div class="service-label">Interiér</div>
-          <h3 class="service-title">Sádrokartony &amp; zednické práce</h3>
+          <div class="service-label">Exteriér</div>
+          <h3 class="service-title">Fasády a sokly</h3>
           <p class="service-desc">
-            Příčky, podhledy, zarovnání a úpravy zdí před malováním.
-          </p>
-        </article>
-
-        <article class="service-card">
-          <div class="service-label">Chytrá domácnost</div>
-          <h3 class="service-title">Smart prvky</h3>
-          <p class="service-desc">
-            Ovládání světel a topení přes mobil, základní automatizace domácnosti.
-          </p>
-        </article>
-
-        <article class="service-card">
-          <div class="service-label">Servis</div>
-          <h3 class="service-title">Menší opravy</h3>
-          <p class="service-desc">
-            Opravy zásuvek, světel, kapajících baterií nebo drobných závad.
+            Menší fasádní práce, opravy omítek, soklů a detailů kolem domu.
           </p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- REALIZACE – slider s kategoriemi -->
+  <!-- REALIZACE – slider + full gallery -->
   <section id="realizace">
     <div class="container">
       <div class="section-header">
         <div class="section-eyebrow">Realizace</div>
-        <h2 class="section-title">Ukázky práce podle typu zakázky</h2>
-        <p class="section-subtitle">
-          Vyberte kategorii. Fotky se pomalu pohybují tam a zpět, abyste viděli detaily práce.
-        </p>
+        <h2 class="section-title">Jak práce vypadají v praxi</h2>
+      
       </div>
 
       <div class="gallery-shell">
-        <div class="gallery-tabs" id="gallery-tabs">
-          <!-- tlačítka doplní JS -->
-        </div>
+        <div class="gallery-tabs" id="gallery-tabs"></div>
 
         <div class="gallery-caption-top">
-          <div id="gallery-job">Elektro – rozvaděče a rozvody</div>
+          <div id="gallery-job">Sádrokarton</div>
           <p id="gallery-text">
-            Čisté zapojení rozvaděče a jističů.
+            Podkrovní pokoj se sádrokartonem a střešním oknem.
           </p>
         </div>
 
         <div class="gallery-viewer">
-          <div class="gallery-image-wrapper" id="gallery-wrapper">
-            <div class="gallery-track" id="gallery-track">
-              <!-- slidey doplní JS -->
-            </div>
+          <div
+            class="gallery-image-wrapper"
+            id="gallery-wrapper"
+            title="Kliknutím otevřete celou galerii"
+          >
+            <div class="gallery-track" id="gallery-track"></div>
           </div>
           <div class="gallery-caption-side">
-            V každé kategorii jsou reálné fotky z vašich zakázek – elektroinstalace, topení,
-            koupelny, sádrokarton i zednické práce.
+            V každé kategorii jsou skutečné fotky ze zakázek – podkroví, koupelny,
+            fasády i další stavební úpravy.
           </div>
         </div>
 
-        <div class="gallery-dots" id="gallery-dots">
-          <!-- bublinky doplní JS -->
+        <div class="gallery-footer">
+          <div class="gallery-dots" id="gallery-dots"></div>
+          <button class="gallery-full-btn" type="button" onclick="openGallery()">
+            <span>🖼</span> Zobrazit celou galerii
+          </button>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- MODAL – plná galerie -->
+  <div class="modal" id="gallery-modal">
+    <div class="modal-backdrop" onclick="closeGallery()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <h3>Galerie – <span id="modal-category-name"></span></h3>
+          <small>Všechny fotky z vybrané kategorie.</small>
+        </div>
+        <button class="modal-close" type="button" onclick="closeGallery()">
+          ×
+        </button>
+      </div>
+      <div class="modal-grid" id="modal-grid"></div>
+    </div>
+  </div>
 
   <!-- O MNE -->
   <section id="omne">
     <div class="container">
       <div class="section-header">
         <div class="section-eyebrow">O mně</div>
-        <h2 class="section-title">Jeden kontakt, více profesí</h2>
+        <h2 class="section-title">Stavař, kterého potkáte na stavbě, ne jen v nabídce</h2>
         <p class="section-subtitle">
-          Nehoním po stavbě pět různých firem – většinu důležitých prací řeším sám.
+          Zakázku řešíme napřímo – přijedu na místo, domluvíme rozsah, ukážu vám, co
+          dává smysl a co ne, a držím se toho, co jsme si řekli.
         </p>
       </div>
 
       <div class="about-grid">
         <div class="about-card">
           <p>
-            Dělám profese, které se na stavbě nejčastěji potkávají: elektro, voda, topení,
-            odpady, sádrokarton i základní zednické práce. Díky tomu se práce lépe navazují
-            a nevznikají zbytečné mezery.
+            Zaměřuji se na stavební a zednické práce, které na sebe navazují – od
+            hrubších úprav přes sádrokarton až po vyrovnání zdí. Díky tomu nemusíte
+            řešit, kdo po kom co opraví.
           </p>
           <ul class="about-list">
-            <li>domluva přímo s jedním řemeslníkem</li>
-            <li>reálné termíny a průběžná komunikace</li>
-            <li>práce dělaná tak, aby u ní šlo v klidu navázat dalšími profesemi</li>
+            <li>jednoduchá domluva a jasný rozsah prací</li>
+            <li>normální termíny místo přehnaných slibů</li>
+            <li>průběžné focení a domluva dalšího postupu</li>
           </ul>
         </div>
         <div>
-          <p><strong>Typické zakázky:</strong></p>
+          <p><strong>Nejčastěji dělám:</strong></p>
           <ul class="about-list">
-            <li>kompletní rozvody v bytě / domě</li>
-            <li>rekonstrukce jádra, koupelen, kuchyní</li>
-            <li>příprava pro kuchyňskou linku a spotřebiče</li>
-            <li>montáž tepelného čerpadla a úpravy topení</li>
-            <li>menší opravy, které nechcete řešit sami</li>
+            <li>byty a zděná jádra</li>
+            <li>úpravy podkroví a sádrokartonové podhledy</li>
+            <li>nové příčky a zazdění starých otvorů</li>
+            <li>opravy zdí po výměně instalací</li>
+            <li>menší fasádní a soklové práce</li>
           </ul>
         </div>
       </div>
@@ -917,32 +1170,43 @@
           <div class="contact-header-row">
             <div>
               <div class="section-eyebrow" style="color:#9ca3af;">Kontakt</div>
-              <h2 class="section-title" style="color:#f9fafb; margin-bottom:0;">Napište mi</h2>
+              <h2 class="section-title" style="margin-bottom:0;">Napište mi</h2>
             </div>
-            <small>nebo použijte formulář</small>
+            <small>nejrychlejší je WhatsApp</small>
           </div>
 
-          <a class="whatsapp-btn" href="https://wa.me/420000000000" target="_blank" rel="noopener">
+          <a
+            class="whatsapp-btn"
+            href="https://wa.me/420000000000"
+            target="_blank"
+            rel="noopener"
+          >
             <span>💬</span> WhatsApp
           </a>
 
-          <div class="contact-row">
-            <strong>Lokalita:</strong>
-            <span>např. Brno a okolí</span>
-          </div>
-
-          <form onsubmit="event.preventDefault(); alert('Zde doplňte vlastní zpracování formuláře (e-mail, systém atd.).');">
+          <form
+            onsubmit="event.preventDefault(); alert('Zde doplňte vlastní zpracování formuláře (e-mail, systém atd.).');"
+          >
             <div>
               <label for="name">Jméno</label>
-              <input type="text" id="name" name="name" placeholder="Jak vám mám říkat?" required>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Jak vám mám říkat?"
+                required
+              />
             </div>
             <div>
               <label for="message">Vaše zpráva</label>
-              <textarea id="message" name="message" placeholder="Krátce popište, co potřebujete – např. rekonstrukce koupelny, nové rozvody v bytě…" required></textarea>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Co chcete předělat, kde je stavba a jak to spěchá?"
+                required
+              ></textarea>
             </div>
-            <button class="btn-primary" type="submit">
-              Odeslat
-            </button>
+            <button class="btn-primary" type="submit">Odeslat</button>
             <div class="contact-note">
               Ozvu se zpravidla do dvou pracovních dnů.
             </div>
@@ -951,8 +1215,8 @@
 
         <div>
           <p class="contact-side-note">
-            Pro přesnější návrh pomůže půdorys nebo fotky stávajícího stavu. U větších
-            zakázek je vždy potřeba osobní prohlídka na místě.
+            Pár fotek nebo půdorys pomůže odhadnout práci i cenu ještě před osobní
+            prohlídkou. Větší zakázky vždy předchází osobní návštěva na místě.
           </p>
         </div>
       </div>
@@ -963,127 +1227,149 @@
   <footer>
     <div class="container footer-inner">
       <div>
-        &copy; <span id="year"></span> Řemeslné práce – všechna práva vyhrazena.
+        &copy; <span id="year"></span> Stavební práce – všechna práva vyhrazena.
       </div>
-      <div>
-        Web s reálnými fotkami z vaší práce.
-      </div>
+      <div>Web s reálnými fotkami z vaší práce.</div>
     </div>
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
 
     function scrollToId(id) {
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el) el.scrollIntoView({ behavior: "smooth" });
     }
 
     function toggleNav() {
-      const nav = document.querySelector('.nav-links');
+      const nav = document.querySelector(".nav-links");
       if (!nav) return;
       const style = window.getComputedStyle(nav);
-      if (style.display === 'none') {
-        nav.style.display = 'flex';
-        nav.style.flexDirection = 'column';
-        nav.style.position = 'absolute';
-        nav.style.top = '54px';
-        nav.style.right = '16px';
-        nav.style.padding = '10px 16px';
-        nav.style.background = 'rgba(15,23,42,0.98)';
-        nav.style.borderRadius = '14px';
-        nav.style.boxShadow = '0 18px 32px rgba(0,0,0,0.45)';
+      if (style.display === "none") {
+        nav.style.display = "flex";
+        nav.style.flexDirection = "column";
+        nav.style.position = "absolute";
+        nav.style.top = "56px";
+        nav.style.right = "20px";
+        nav.style.padding = "10px 16px";
+        nav.style.background = "rgba(2,6,23,0.97)";
+        nav.style.borderRadius = "14px";
+        nav.style.border = "1px solid #4b5563";
+        nav.style.boxShadow = "0 18px 40px rgba(0,0,0,0.9)";
+        nav.style.zIndex = "60";
       } else {
-        nav.style.display = '';
-        nav.style.flexDirection = '';
-        nav.style.position = '';
-        nav.style.top = '';
-        nav.style.right = '';
-        nav.style.padding = '';
-        nav.style.background = '';
-        nav.style.borderRadius = '';
-        nav.style.boxShadow = '';
+        nav.removeAttribute("style");
       }
     }
 
-    /* DATA PRO KATEGORIE A SLIDER */
+    /* DATA PRO KATEGORIE – jen stavební */
     const categories = {
-      elektro: {
-        label: 'Elektro',
-        slides: [
-          { src: 'ele.png',  alt: 'Elektroinstalace – rozvaděč 1', title: 'Elektro – rozvaděče a rozvody', text: 'Čisté zapojení rozvaděče a jističů.' },
-          { src: 'ele2.png', alt: 'Elektroinstalace – rozvaděč 2', title: 'Elektro – rozvaděče a rozvody', text: 'Další příklad rozvaděče s řádným uspořádáním vodičů.' },
-          { src: 'ele3.png', alt: 'Elektroinstalace – rozvod ve zdi', title: 'Elektro – příprava rozvodů', text: 'Příprava elektro rozvodů ve zdi před zapravením.' }
-        ]
-      },
-      topeni: {
-        label: 'Topení',
-        slides: [
-          { src: 'topeni.png',  alt: 'Rozvody topení v místnosti', title: 'Topení – rozvody', text: 'Rozvody topení v technické místnosti.' },
-          { src: 'topeni2.png', alt: 'Technická místnost s bojlerem a rozvody', title: 'Topení – technická místnost', text: 'Technická místnost s bojlerem a napojením rozvodů.' },
-          { src: 'topeni3.png', alt: 'Topenářské rozvody a armatury', title: 'Topení – vedení a armatury', text: 'Detail topenářských rozvodů a armatur.' }
-        ]
-      },
-      koupelna: {
-        label: 'Koupelna',
-        slides: [
-          { src: 'koupelna.png', alt: 'Instalace v koupelně', title: 'Koupelna – příprava instalací', text: 'Příprava rozvodů a vývodů pro koupelnu.' }
-        ]
-      },
       sadro: {
-        label: 'Sádrokarton',
+        label: "Sádrokarton",
         slides: [
-          { src: 'sadro.jpg',  alt: 'Sádrokarton – hotová místnost se střešním oknem', title: 'Sádrokarton – hotový pokoj', text: 'Podkrovní místnost se sádrokartonem a střešním oknem.' },
-          { src: 'sadro2.jpg', alt: 'Sádrokarton – konstrukce a rozvody', title: 'Sádrokarton – montáž konstrukce', text: 'Montáž sádrokartonové konstrukce a vedení rozvodů.' },
-          { src: 'sadro4.jpg', alt: 'Sádrokarton – hotové šikminy', title: 'Sádrokarton – šikminy a podhledy', text: 'Dokončené šikminy a podhledy před malbou.' }
+          {
+            src: "sadro.jpg",
+            alt: "Sádrokarton – hotová místnost se střešním oknem",
+            title: "Sádrokarton",
+            text: "Hotový pokoj v podkroví se střešním oknem."
+          },
+          {
+            src: "sadro2.jpg",
+            alt: "Sádrokarton – konstrukce a rozvody",
+            title: "Sádrokarton",
+            text: "Konstrukce sádrokartonu a připravené instalace."
+          },
+          {
+            src: "sadro4.jpg",
+            alt: "Sádrokarton – hotové šikminy",
+            title: "Sádrokarton",
+            text: "Dokončené šikminy a podhledy před malbou."
+          }
         ]
       },
       zednik: {
-        label: 'Zednické práce',
+        label: "Zednické práce",
         slides: [
-          { src: 'zednik.jpg',  alt: 'Fasáda domu', title: 'Zednické práce – fasáda', text: 'Zateplená a upravená fasáda rodinného domu.' },
-          { src: 'zednik2.jpg', alt: 'Interiérová stěna s obkladem', title: 'Zednické práce – interiér', text: 'Obložená stěna a připravený interiér.' },
-          { src: 'zednik3.jpg', alt: 'Schodiště a omítky', title: 'Zednické práce – omítky', text: 'Schodiště a omítky před dokončením interiéru.' }
+          {
+            src: "zednik.jpg",
+            alt: "Fasáda domu",
+            title: "Zednické práce",
+            text: "Úprava fasády a soklu rodinného domu."
+          },
+          {
+            src: "zednik2.jpg",
+            alt: "Interiérová stěna s obkladem",
+            title: "Zednické práce",
+            text: "Interiérové úpravy a obklady stěn."
+          },
+          {
+            src: "zednik3.jpg",
+            alt: "Schodiště a omítky",
+            title: "Zednické práce",
+            text: "Schodiště a nové omítky v interiéru."
+          }
+        ]
+      },
+      koupelna: {
+        label: "Koupelna",
+        slides: [
+          {
+            src: "koupelna.png",
+            alt: "Instalace v koupelně",
+            title: "Koupelna",
+            text: "Příprava zdiva a stěn pro novou koupelnu."
+          }
         ]
       },
       reko: {
-        label: 'Rekonstrukce',
+        label: "Hotové interiéry",
         slides: [
-          { src: 'reko.png', alt: 'Rekonstruovaný interiér', title: 'Rekonstrukce – hotový prostor', text: 'Příklad větší rekonstrukce s kombinací více profesí.' }
+          {
+            src: "reko.png",
+            alt: "Hotový interiér po úpravě",
+            title: "Hotový interiér",
+            text: "Prostor po větší úpravě bytu."
+          }
         ]
       }
     };
 
     const SPEED = 0.25; // px za frame
 
-    const track = document.getElementById('gallery-track');
-    const wrapperEl = document.getElementById('gallery-wrapper');
-    const dotsContainer = document.getElementById('gallery-dots');
-    const jobEl = document.getElementById('gallery-job');
-    const textEl = document.getElementById('gallery-text');
-    const tabsEl = document.getElementById('gallery-tabs');
+    const track = document.getElementById("gallery-track");
+    const wrapperEl = document.getElementById("gallery-wrapper");
+    const dotsContainer = document.getElementById("gallery-dots");
+    const jobEl = document.getElementById("gallery-job");
+    const textEl = document.getElementById("gallery-text");
+    const tabsEl = document.getElementById("gallery-tabs");
 
-    let currentCategoryKey = 'elektro';
+    const modal = document.getElementById("gallery-modal");
+    const modalCategoryName = document.getElementById("modal-category-name");
+    const modalGrid = document.getElementById("modal-grid");
+
+    let currentCategoryKey = "sadro";
     let slidesData = [];
     let dots = [];
     let offsetX = 0;
     let direction = -1; // -1 doleva, 1 doprava
-    let slideStep = 260 + 8;
-    let visibleCount = 1;
+    let slideStep = 268;
     let lastCenterIndex = -1;
     let animStarted = false;
 
     function buildTabs() {
       Object.entries(categories).forEach(([key, cat]) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'gallery-tab' + (key === currentCategoryKey ? ' active' : '');
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className =
+          "gallery-tab" + (key === currentCategoryKey ? " active" : "");
         btn.textContent = cat.label;
-        btn.addEventListener('click', () => {
+        btn.addEventListener("click", () => {
           if (currentCategoryKey === key) return;
           currentCategoryKey = key;
-          document.querySelectorAll('.gallery-tab').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
+          document
+            .querySelectorAll(".gallery-tab")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
           loadCategory();
         });
         tabsEl.appendChild(btn);
@@ -1094,17 +1380,17 @@
       const cat = categories[currentCategoryKey];
       slidesData = cat.slides;
 
-      track.innerHTML = '';
-      dotsContainer.innerHTML = '';
+      track.innerHTML = "";
+      dotsContainer.innerHTML = "";
       dots = [];
       offsetX = 0;
       direction = -1;
       lastCenterIndex = -1;
 
-      slidesData.forEach(s => {
-        const slide = document.createElement('div');
-        slide.className = 'gallery-slide';
-        const img = document.createElement('img');
+      slidesData.forEach((s) => {
+        const slide = document.createElement("div");
+        slide.className = "gallery-slide";
+        const img = document.createElement("img");
         img.src = s.src;
         img.alt = s.alt;
         slide.appendChild(img);
@@ -1112,8 +1398,8 @@
       });
 
       slidesData.forEach(() => {
-        const dot = document.createElement('div');
-        dot.className = 'gallery-dot';
+        const dot = document.createElement("div");
+        dot.className = "gallery-dot";
         dotsContainer.appendChild(dot);
         dots.push(dot);
       });
@@ -1129,7 +1415,6 @@
       const style = window.getComputedStyle(track);
       const gap = parseFloat(style.columnGap || style.gap || 8);
       slideStep = rect.width + gap;
-      visibleCount = Math.max(1, Math.round(wrapperEl.clientWidth / slideStep));
     }
 
     function updateCenter() {
@@ -1146,13 +1431,13 @@
       jobEl.textContent = s.title;
       textEl.textContent = s.text;
 
-      dots.forEach((d, i) => d.classList.toggle('active', i === centerIndex));
+      dots.forEach((d, i) => d.classList.toggle("active", i === centerIndex));
 
-      wrapperEl.classList.add('glow');
-      jobEl.classList.add('glow');
+      wrapperEl.classList.add("glow");
+      jobEl.classList.add("glow");
       setTimeout(() => {
-        wrapperEl.classList.remove('glow');
-        jobEl.classList.remove('glow');
+        wrapperEl.classList.remove("glow");
+        jobEl.classList.remove("glow");
       }, 700);
     }
 
@@ -1176,12 +1461,12 @@
         direction = -1;
       }
 
-      track.style.transform = 'translateX(' + offsetX + 'px)';
+      track.style.transform = "translateX(" + offsetX + "px)";
       updateCenter();
       requestAnimationFrame(tick);
     }
 
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       const prevStep = slideStep;
       setupSizes();
       if (prevStep && slideStep) {
@@ -1189,7 +1474,33 @@
       }
     });
 
-    // inicializace
+    // FULL GALLERY MODAL
+    function openGallery() {
+      const cat = categories[currentCategoryKey];
+      modalCategoryName.textContent = cat.label;
+      modalGrid.innerHTML = "";
+      cat.slides.forEach((s) => {
+        const thumb = document.createElement("div");
+        thumb.className = "modal-thumb";
+        const img = document.createElement("img");
+        img.src = s.src;
+        img.alt = s.alt;
+        thumb.appendChild(img);
+        modalGrid.appendChild(thumb);
+      });
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeGallery() {
+      modal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    // otevřít galerii klikem na hlavní box
+    wrapperEl.addEventListener("click", openGallery);
+
+    // inicializace slideru
     buildTabs();
     loadCategory();
     if (!animStarted) {
